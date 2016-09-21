@@ -1,0 +1,93 @@
+// sudo gem install sass
+// sass style.scss ../site/gen/style.css
+
+$code-font-stack: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
+$primary-color: #242b36;
+$secondary-color: #4c4c53;
+$accent-color: #71ca44;
+$text-color: #4d4d4d;
+$text-dark-bg: rgba(36, 43, 54, 0.5);
+
+@mixin top_bottom_padding($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}
+
+@mixin bg_img($url) {
+  background: url($url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+body {
+  padding-top: 50px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+  color: $text-color;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
+.section-hero {
+  @include bg_img('bg_top.jpg')
+}
+
+.navbar-inverse {
+  background: $primary-color none;
+  border-color: $primary-color;
+}
+
+.dark_layer {
+  color: #ffffff;
+  font-style: normal;
+  background: $text-dark-bg;
+  background-size: cover;
+  p {
+    font-size: 1.75rem;
+  }
+}
+
+.dark_dark_layer {
+  @extend .dark_layer;
+  background: $secondary-color;
+}
+
+.mad_footer {
+  div {
+    @include top_bottom_padding(16pt);
+  }
+  @include bg_img('bg_bottom.jpg');
+}
+
+.hero-heading {
+  h1 {
+    font-family: $code-font-stack;
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  p {
+    margin-top: 2em;
+    text-align: center;
+  }
+  div {
+    @include top_bottom_padding(16pt);
+  }
+}
+
+.accented {
+  color: $accent-color;
+}
+
+.navbar {
+  font-size: 1.75rem;
+}
+
+a {
+  font-size: 1.75rem;
+}
