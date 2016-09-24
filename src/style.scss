@@ -4,7 +4,7 @@
 $code-font-stack: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
 $primary-color: #242b36;
 $secondary-color: #4c4c53;
-$accent-color: #71ca44;
+$accent-color: #e60000;
 $text-color: #4d4d4d;
 $text-dark-bg: rgba(36, 43, 54, 0.5);
 
@@ -34,7 +34,11 @@ body {
 }
 
 .section-hero {
-  @include bg_img('bg_top.jpg')
+  @include bg_img('../images/bg_top.jpg')
+}
+
+.icon {
+  height: 96px;
 }
 
 .navbar-inverse {
@@ -42,26 +46,42 @@ body {
   border-color: $primary-color;
 }
 
-.dark_layer {
+.dark_layer_text {
   color: #ffffff;
   font-style: normal;
   background: $text-dark-bg;
   background-size: cover;
+  a {
+    color: #ffffff;
+  }
+}
+
+.dark_layer {
+  @extend .dark_layer_text;
   p {
     font-size: 1.75rem;
   }
 }
 
 .dark_dark_layer {
-  @extend .dark_layer;
+  @extend .dark_layer_text;
   background: $secondary-color;
+}
+
+.standard_margin {
+  margin: 16px;
 }
 
 .mad_footer {
   div {
     @include top_bottom_padding(16pt);
   }
-  @include bg_img('bg_bottom.jpg');
+  @include bg_img('../images/bg_bottom.jpg');
+}
+
+.centered {
+  display: block;
+  margin: auto;
 }
 
 .hero-heading {
@@ -78,6 +98,10 @@ body {
   div {
     @include top_bottom_padding(16pt);
   }
+}
+
+.front_image_div {
+  margin-top: 12pt;
 }
 
 .accented {
