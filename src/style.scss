@@ -72,6 +72,11 @@ body {
   margin: 16px;
 }
 
+.standard_margin_top_bottom {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
 .mad_footer {
   div {
     @include top_bottom_padding(16pt);
