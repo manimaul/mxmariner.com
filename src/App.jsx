@@ -97,11 +97,9 @@ class Menu extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-    }
+    componentDidMount() {}
 
-    componentWillUnmount() {
-    }
+    componentWillUnmount() {}
 
     render() {
         return (
@@ -132,16 +130,52 @@ class Menu extends React.Component {
     }
 }
 
+class Section extends React.Component {
+    constructor(props) {
+        super(props);
+        this.title = props.title;
+        this.message = props.message;
+        this.imgUrl1 = props.imgUrl1;
+        this.imgUrl2 = props.imgUrl2;
+        this.isDark = props.isDark == true;
+    }
+
+    componentDidMount() {}
+
+    componentWillUnmount() {}
+
+    render() {
+        return (
+            <div className={this.isDark ? "dark_dark_layer" : ""}>
+                <div className="container standard_margin">
+                    <div className={"row" + (this.isDark ? " standard_margin_top_bottom" : "")}>
+                        <div className="col-xs-6 col-md-4">
+                            <div className="page-header">
+                                <h1>{this.title}</h1>
+                            </div>
+                            <p>{this.message}</p>
+                        </div>
+                        <div className="col-xs-6 col-md-4">
+                            <img className="img-responsive" src={this.imgUrl1}/>
+                        </div>
+                        <div className="col-xs-6 col-md-4">
+                            <img className="img-responsive" src={this.imgUrl2}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            );
+    }
+}
+
 class App extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    componentDidMount() {
-    }
+    componentDidMount() {}
 
-    componentWillUnmount() {
-    }
+    componentWillUnmount() {}
 
     render() {
         return (
@@ -149,62 +183,30 @@ class App extends React.Component {
                 <Menu/>
                 <Hero titleImage={"images/mxmariner_logo.png"}
                       message={"Marine navigation for Android"}/>
-                <div className="container standard_margin">
-                    <div className="row">
-                        <div className="col-xs-6 col-md-4">
-                            <img className="img-responsive" src="images/device-2016-09-24-154353.png"/>
-                        </div>
-                        <div className="col-xs-12 col-md-8">
-                            <div className="page-header">
-                                <h1>MX Mariner</h1>
-                            </div>
-                            <p>
-                                MX Mariner is an easy to use mobile marine navigator / chart plotter featuring quilted,
-                                offline marine raster charts. Raster marine charts published by NOAA (USA), LINZ
-                                (New Zealand) and Brazil Navy are available to install from within MX Mariner as
-                                free, downloadable regions. Once downloaded, each marine chart region is available
-                                for use offline. When online, a road map or satellite image map is alternatively
-                                available. UK chart regions are available for the United Kingdom, Ireland and
-                                Channel Islands as in-app purchases. Each UK chart region in-app purchase gives you
-                                1 year of free chart updates. UK chart regions in MX Mariner are "derived in part
-                                from material obtained from the UK Hydrographic Office". Please see the <Link
-                                to={"/charts"} href="">&nbsp;CHARTS&nbsp;</Link> section for more details on offline
-                                marine chart regions available for download. MX Mariner is useful for marine
-                                navigation featuring a simple heads up display showing speed and course. You have
-                                the ability to drop waypoints, record tracks and create routes. Routes can be
-                                activated and the heads up display will also show bearing and range to next waypoint
-                                below speed and course. All waypoints, tracks and routes can be backed up as GPX
-                                files. GPX files can be imported and exported to other programs. MX Mariner also has
-                                configurable units of measure for bearings, position, speed and distance. Bearings
-                                in MX Mariner can be shown as true or magnetic. Magnetic bearings use the world
-                                magnetic model published National Geospatial Intelligence Agency. Speed and
-                                distances can be set to Nautical, Statute or Metric. Position can be set to degrees,
-                                degrees-minutes or degrees-minutes-seconds. Navigators can also choose to use their
-                                device internal magnetometer or GPS course to orientate ship on the marine chart.
-                                Optionally, heading and course predictor lines can also be shown on the marine
-                                chart. MX Mariner also offers configurable back-light levels suitable for daylight
-                                to off-shore night conditions.
-                            </p>
-                        </div>
-                    </div>
 
-                </div>
+                <Section title="Simplicity"
+                    message="MX Mariner is an easy to use mobile marine navigator / chart plotter."
+                    imgUrl1="images/device-2016-09-24-154353.png"
+                    imgUrl2="images/device-2016-09-24-154353.png"
+                    isDark={false}/>
 
-                <div className="dark_dark_layer">
-                    <div className="container standard_margin">
-                        <div className="row standard_margin_top_bottom">
-                            <div className="col-xs-6 col-md-4">
-                                <img className="img-responsive" src="images/device-2016-09-24-154353.png"/>
-                            </div>
-                            <div className="col-xs-6 col-md-4">
-                                <img className="img-responsive" src="images/device-2016-09-24-154353.png"/>
-                            </div>
-                            <div className="col-xs-6 col-md-4">
-                                <img className="img-responsive" src="images/device-2016-09-24-154353.png"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Section title="Offline Raster Charts"
+                         message="Raster marine charts for United States, New Zealand, Brazil and United Kingdom."
+                         imgUrl1="images/device-2016-09-24-154353.png"
+                         imgUrl2="images/device-2016-09-24-154353.png"
+                         isDark={true}/>
+
+                <Section title="ActiveCaptain"
+                         message="Interactive Cruising Guidebook"
+                         imgUrl1="images/device-2016-09-24-154353.png"
+                         imgUrl2="images/device-2016-09-24-154353.png"
+                         isDark={false}/>
+
+                <Section title="Measure"
+                         message="Simple measure tool with configurable units of measure."
+                         imgUrl1="images/device-2016-09-24-154353.png"
+                         imgUrl2="images/device-2016-09-24-154353.png"
+                         isDark={true}/>
 
                 <div className="container standard_margin">
                     <div className="row">
@@ -229,6 +231,19 @@ class App extends React.Component {
                         </div>
                     </div>
                 </div>
+
+                <Section title="Record"
+                         message="Record and view previously laid GPS tracks."
+                         imgUrl1="images/device-2016-09-24-154353.png"
+                         imgUrl2="images/device-2016-09-24-154353.png"
+                         isDark={true}/>
+
+                <Section title="Points and Routes"
+                         message="Create, edit and navigate to points and routes."
+                         imgUrl1="images/device-2016-09-24-154353.png"
+                         imgUrl2="images/device-2016-09-24-154353.png"
+                         isDark={false}/>
+
                 <Footer/>
             </div>
         )

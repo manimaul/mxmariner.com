@@ -69,7 +69,7 @@ body {
 }
 
 .standard_margin {
-  margin: 16px;
+  margin-top: 16px;
 }
 
 .standard_margin_top_bottom {
@@ -81,6 +81,7 @@ body {
   div {
     @include top_bottom_padding(16pt);
   }
+  margin-top: 16px;
   @include bg_img('../images/bg_bottom.jpg');
 }
 
@@ -115,6 +116,10 @@ body {
 
 .navbar {
   font-size: 1.75rem;
+}
+
+.screenshot {
+  width: 250px;
 }
 
 a {
