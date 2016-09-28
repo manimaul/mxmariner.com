@@ -97,9 +97,11 @@ class Menu extends React.Component {
         super(props);
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+    }
 
-    componentWillUnmount() {}
+    componentWillUnmount() {
+    }
 
     render() {
         return (
@@ -140,9 +142,19 @@ class Section extends React.Component {
         this.isDark = props.isDark == true;
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+    }
 
-    componentWillUnmount() {}
+    componentWillUnmount() {
+    }
+
+    image(imageUrl) {
+        if (imageUrl) {
+            return (
+                <img className="img-responsive" src={imageUrl}/>
+            )
+        }
+    }
 
     render() {
         return (
@@ -156,15 +168,15 @@ class Section extends React.Component {
                             <p>{this.message}</p>
                         </div>
                         <div className="col-xs-6 col-md-4">
-                            <img className="img-responsive" src={this.imgUrl1}/>
+                            {this.image(this.imgUrl1)}
                         </div>
                         <div className="col-xs-6 col-md-4">
-                            <img className="img-responsive" src={this.imgUrl2}/>
+                            {this.image(this.imgUrl2)}
                         </div>
                     </div>
                 </div>
             </div>
-            );
+        );
     }
 }
 
@@ -173,39 +185,39 @@ class App extends React.Component {
         super(props);
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+    }
 
-    componentWillUnmount() {}
+    componentWillUnmount() {
+    }
 
     render() {
         return (
             <div>
                 <Menu/>
-                <Hero titleImage={"images/mxmariner_logo.png"}
+                <Hero titleImage={"images/mxmariner_logo-nq8.png"}
                       message={"Marine navigation for Android"}/>
 
                 <Section title="Simplicity"
-                    message="MX Mariner is an easy to use mobile marine navigator / chart plotter."
-                    imgUrl1="images/device-2016-09-24-154353.png"
-                    imgUrl2="images/device-2016-09-24-154353.png"
-                    isDark={false}/>
+                         message="MX Mariner is an easy to use mobile marine navigator / chart plotter."
+                         imgUrl1="images/sat-nq8.png"
+                         imgUrl2="images/chart-nq8.png"
+                         isDark={false}/>
 
                 <Section title="Offline Raster Charts"
                          message="Raster marine charts for United States, New Zealand, Brazil and United Kingdom."
-                         imgUrl1="images/device-2016-09-24-154353.png"
-                         imgUrl2="images/device-2016-09-24-154353.png"
+                         imgUrl2="images/all-nq8.png"
                          isDark={true}/>
 
                 <Section title="ActiveCaptain"
                          message="Interactive Cruising Guidebook"
-                         imgUrl1="images/device-2016-09-24-154353.png"
-                         imgUrl2="images/device-2016-09-24-154353.png"
+                         imgUrl1="images/ac_cred-nq8.png"
+                         imgUrl2="images/ac_review-nq8.png"
                          isDark={false}/>
 
                 <Section title="Measure"
                          message="Simple measure tool with configurable units of measure."
-                         imgUrl1="images/device-2016-09-24-154353.png"
-                         imgUrl2="images/device-2016-09-24-154353.png"
+                         imgUrl2="images/measure-nq8.png"
                          isDark={true}/>
 
                 <div className="container standard_margin">
@@ -234,14 +246,14 @@ class App extends React.Component {
 
                 <Section title="Record"
                          message="Record and view previously laid GPS tracks."
-                         imgUrl1="images/device-2016-09-24-154353.png"
-                         imgUrl2="images/device-2016-09-24-154353.png"
+                         imgUrl1="images/track-nq8.png"
+                         imgUrl2="images/track_detail-nq8.png"
                          isDark={true}/>
 
                 <Section title="Points and Routes"
                          message="Create, edit and navigate to points and routes."
-                         imgUrl1="images/device-2016-09-24-154353.png"
-                         imgUrl2="images/device-2016-09-24-154353.png"
+                         imgUrl1="images/route-nq8.png"
+                         imgUrl2="images/route_options-nq8.png"
                          isDark={false}/>
 
                 <Footer/>
@@ -322,7 +334,7 @@ class Manual extends React.Component {
         return (
             <div>
                 <Menu/>
-                <Hero titleImage={"images/mxmariner_logo.png"}
+                <Hero titleImage={"images/mxmariner_logo-nq8.png"}
                       message={"Marine navigation for Android"}/>
                 <div className="container standard_margin">
                     <div className="form-group">
@@ -353,7 +365,7 @@ class Charts extends React.Component {
         return (
             <div>
                 <Menu/>
-                <Hero titleImage={"images/mxmariner_logo.png"}
+                <Hero titleImage={"images/mxmariner_logo-nq8.png"}
                       message={"Marine navigation for Android"}/>
                 <div>TODO:</div>
                 <Footer/>
