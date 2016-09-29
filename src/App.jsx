@@ -3,6 +3,154 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, Link, hashHistory} from 'react-router'
+import LazyLoad from 'react-lazyload';
+
+class ManualState {
+    constructor() {
+        this.currentItem = 0;
+        this.listItems = [
+            "General Information",
+            "Installing Chart Regions",
+            "Uninstalling Chart Regions",
+            "Updating Chart Regions",
+            "Configuring Storage",
+            "Display Settings and Features:",
+            "Sensor Options - Ship & Map Presentation",
+            "Cart Panning, Zooming, Measuring",
+            "GPS follow",
+            "Measure Tool",
+            "Units of measure",
+            "Adding Waypoints",
+            "Working with Waypoints",
+            "Recording A Track",
+            "Working with Tracks",
+            "Adding Routes",
+            "Working with Routes",
+            "Route Edit Points Mode",
+            "Marks Manager"]
+    }
+
+    getItems() {
+        return this.listItems;
+    }
+
+
+    getCurrentItem() {
+        return this.currentItem;
+    }
+
+    setCurrentItem(value) {
+        this.currentItem = value;
+    }
+
+    getCurrentPage() {
+        switch (this.currentItem) {
+            case 0: // General Information
+                return (
+                    <div>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <p><img src="img/collage.png"/></p>
+                        <li>MX Mariner is a basic chart plotting program for Android.</li>
+                        <li>MX Mariner has 3 map modes: Raster Charts, Roadmap, and
+                            Satellite
+                        </li>
+                        <li>Raster Chart mode works 100% offline (after initial one time
+                            chart region download)
+                        </li>
+                        <li>Roadmap mode requires an internet / data connection</li>
+                        <li>Satellite mode requires an internet / data connection</li>
+                        <li>The screen will stay on when you are in the main chart/map view with GPS follow enabled and
+                            will not power off automatically.
+                        </li>
+                    </div>
+                );
+            case 1: // Installing Chart Regions
+                return (
+                    <div>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <img src="img/coverage2.png"/>
+                        <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
+                        <img className="shot" src="img/noaa.png"/>&nbsp;&nbsp;&nbsp;<img className="shot"
+                                                                                         src="img/ukho.png"/><br />
+                        <br />
+                        <li>LINZ and Brazilian Navy raster charts are divided into 2
+                            regions.
+                        </li>
+                        <li>NOAA USA raster charts are divided into 20 regions</li>
+                        <li>UK raster charts are divided into 4 regions.
+                            <br />
+                            **UK region note: Each UK region is available as an in-app
+                            purchase. Each region can be downloaded and/or updated for 1year
+                            after purchase.
+                        </li>
+                        <li>Regions range in size from 80 to 500MB</li>
+                        <li>The regions will be stored in the &lt;storage&gt;/mxmariner directory on your device. On
+                            some android devices, this directory is an SD Card while others it is built in storage. You
+                            will need adequate storage space to download the chart regions you want to use.
+                        </li>
+                        <li>Simply tap on the region you would like to download to your device.</li>
+                        <img className="shot" src="img/dl_region.png"/>
+                        <br />
+                        <br />
+                        <li>It's recommend to download regions when connected to wifi or 4g.</li>
+                        <li>Pushing the back button during the download process will cancel the download.</li>
+                        <li>The download can be resumed at a later time if you cancel.</li>
+                        <li>Pushing the home button on your device allow you to do other task while the download
+                            continues.
+                        </li>
+                        <img className="shot" src="img/dl_progress.png"/>
+                    </div>
+                );
+            case 2: // Uninstalling Chart Regions
+                return (
+                    <div>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
+                        <li>Long press on an installed or partially downloaded region and choose "OK" to delete it.</li>
+                        <li>Deleted regions are completely removed from device SD Card.</li>
+                        <img className="shot" src="img/del_region.png"/>
+                    </div>
+                );
+            case 3: // Updating Chart Regions
+                return (
+                    <div>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
+                        <li>When an updated region file is available for an an installed region, the region will be
+                            labeled with an &quot;update available&quot; tag in yellow.
+                        </li>
+                        <li>Tap on the region in the menu to download the update.</li>
+                    </div>
+                );
+            case 4: // Configuring Storage
+                return (
+                    <div>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <li>Menu--&gt; Settings --&gt; Storage</li>
+                        <li>This will configure which storage device (ex internal or external) MX Mariner stores data
+                            to.
+                        </li>
+                        <li>Selecting a different storage device here will also move existing MX Mariner chart and GPX
+                            data to the new specified location.
+                        </li>
+                    </div>
+                );
+            case 5: // Display Settings and Features
+                return (
+                    <div>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <li>The chart/map display settings can be quickly changed by pressing Menu --&gt; Display</li>
+                        <li>The Map Type (Raster Charts, Roadmap, Satellite) can be quickly changed using the Map Type
+                            drop down.
+                        </li>
+                        <img className="shot" src="img/display_maptype.png"/>
+                    </div>
+                );
+        }
+    }
+}
+
+var manualState = new ManualState();
 
 class Footer extends React.Component {
     constructor(props) {
@@ -120,8 +268,6 @@ class Menu extends React.Component {
                         </div>
                         <div id="navbar" className="collapse navbar-collapse">
                             <ul className="nav navbar-nav">
-                                <li><Link to={"/manual"} href="">MANUAL</Link></li>
-                                <li><Link to={"/charts"} href="">CHARTS</Link></li>
                                 <li><a href="https://play.google.com/store/apps/details?id=mx.mariner">DOWNLOAD</a></li>
                             </ul>
                         </div>
@@ -151,7 +297,9 @@ class Section extends React.Component {
     image(imageUrl) {
         if (imageUrl) {
             return (
-                <img className="img-responsive" src={imageUrl}/>
+                <LazyLoad height={"100%"}>
+                    <img className="img-responsive" src={imageUrl}/>
+                </LazyLoad>
             )
         }
     }
@@ -295,6 +443,7 @@ class Review extends React.Component {
 class Manual extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {};
     }
 
     componentDidMount() {
@@ -306,31 +455,16 @@ class Manual extends React.Component {
     makeItem(name, index) {
         var label = "(" + (index + 1) + ") " + name;
         return (
-            <option selected value={index} label={label}>{name}</option>
+            <option key={index} value={index} label={label}>{name}</option>
         );
     }
 
+    handleChange(event) {
+        manualState.setCurrentItem(event.target.value);
+        this.setState({});
+    };
+
     render() {
-        var listItems = [
-            "General Information",
-            "Installing Chart Regions",
-            "Uninstalling Chart Regions",
-            "Updating Chart Regions",
-            "Configuring Storage",
-            "Display Settings and Features:",
-            "Sensor Options - Ship & Map Presentation",
-            "Cart Panning, Zooming, Measuring",
-            "GPS follow",
-            "Measure Tool",
-            "Units of measure",
-            "Adding Waypoints",
-            "Working with Waypoints",
-            "Recording A Track",
-            "Working with Tracks",
-            "Adding Routes",
-            "Working with Routes",
-            "Route Edit Points Mode",
-            "Marks Manager"].map(this.makeItem);
         return (
             <div>
                 <Menu/>
@@ -339,9 +473,14 @@ class Manual extends React.Component {
                 <div className="container standard_margin">
                     <div className="form-group">
                         <label>Section:</label>
-                        <select className="form-control">
-                            {listItems}
+                        <select className="form-control" value={manualState.getCurrentItem()}
+                                onChange={this.handleChange.bind(this)}>
+                            {manualState.getItems().map(this.makeItem)}
                         </select>
+                    </div>
+
+                    <div className="jumbotron">
+                        {manualState.getCurrentPage()}
                     </div>
                 </div>
                 <Footer/>

@@ -41,7 +41,15 @@ module.exports = {
             }
         ]
     },
-    plugins: PROD ? [new webpack.optimize.UglifyJsPlugin({minimize: true})] : [],
+    plugins: PROD ? [
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true
+        }),
+        new webpack.DefinePlugin({
+        "process.env": {
+            NODE_ENV: JSON.stringify("production")
+        }
+    })] : [],
     //externals: {
     //    //don't bundle the 'react' npm package with our bundle.js
     //    //but get it from a global 'React' variable

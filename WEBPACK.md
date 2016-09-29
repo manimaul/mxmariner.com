@@ -20,6 +20,11 @@ npm install --save react react-dom react-router
 npm install --save babel-loader babel-core babel-preset-es2015 babel-preset-react
 ```
 
+#### Lazy Load
+```bash
+npm install --save react-lazyload
+```
+
 ####debug build
 ```bash
 PROD_ENV=0 webpack
