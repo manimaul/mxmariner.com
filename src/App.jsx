@@ -34,21 +34,20 @@ class ManualState {
         return this.listItems;
     }
 
-
     getCurrentItem() {
         return this.currentItem;
     }
 
     setCurrentItem(value) {
-        this.currentItem = value;
+        this.currentItem = parseInt(value);
     }
 
-    getCurrentPage(item) {
-        switch (parseInt(item)) {
+    getCurrentPage() {
+        switch (this.currentItem) {
             case 0: // General Information
                 return (
                     <div>
-                        <h3><strong>{this.listItems[item]}</strong></h3>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <p><img src="img/collage.png"/></p>
                         <li>MX Mariner is a basic chart plotting program for Android.</li>
                         <li>MX Mariner has 3 map modes: Raster Charts, Roadmap, and
@@ -67,7 +66,7 @@ class ManualState {
             case 1: // Installing Chart Regions
                 return (
                     <div>
-                        <h3><strong>{this.listItems[item]}</strong></h3>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <img src="img/coverage2.png"/>
                         <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
                         <img className="shot" src="img/noaa.png"/>&nbsp;&nbsp;&nbsp;<img className="shot"
@@ -104,7 +103,7 @@ class ManualState {
             case 2: // Uninstalling Chart Regions
                 return (
                     <div>
-                        <h3><strong>{this.listItems[item]}</strong></h3>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
                         <li>Long press on an installed or partially downloaded region and choose "OK" to delete it.</li>
                         <li>Deleted regions are completely removed from device SD Card.</li>
@@ -114,7 +113,7 @@ class ManualState {
             case 3: // Updating Chart Regions
                 return (
                     <div>
-                        <h3><strong>{this.listItems[item]}</strong></h3>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
                         <li>When an updated region file is available for an an installed region, the region will be
                             labeled with an &quot;update available&quot; tag in yellow.
@@ -125,7 +124,7 @@ class ManualState {
             case 4: // Configuring Storage
                 return (
                     <div>
-                        <h3><strong>{this.listItems[item]}</strong></h3>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <li>Menu--&gt; Settings --&gt; Storage</li>
                         <li>This will configure which storage device (ex internal or external) MX Mariner stores data
                             to.
@@ -138,7 +137,7 @@ class ManualState {
             case 5: // Display Settings and Features
                 return (
                     <div>
-                        <h3><strong>{this.listItems[item]}</strong></h3>
+                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <li>The chart/map display settings can be quickly changed by pressing Menu --&gt; Display</li>
                         <li>The Map Type (Raster Charts, Roadmap, Satellite) can be quickly changed using the Map Type
                             drop down.
@@ -445,9 +444,9 @@ class Review extends React.Component {
 class Manual extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selected: manualState.getCurrentItem()
-        };
+        if (this.props.params) {
+            manualState.setCurrentItem(this.props.params.sectionId);
+        }
     }
 
     componentDidMount() {
@@ -464,11 +463,45 @@ class Manual extends React.Component {
     }
 
     handleChange(event) {
-        manualState.setCurrentItem(event.target.value);
-        this.setState({
-            selected: manualState.getCurrentItem()
-        });
+        this.handleClick(event.target.value);
     };
+
+    handleClick(index) {
+        manualState.setCurrentItem(index);
+        hashHistory.push("/manual/" + manualState.getCurrentItem());
+    }
+
+    handleClickNext() {
+        this.handleClick(manualState.getCurrentItem() + 1)
+    }
+
+    handleClickPrevious() {
+        this.handleClick(manualState.getCurrentItem() - 1)
+    }
+
+    getPreviousLink() {
+        if (manualState.getCurrentItem() == 0) {
+            return (
+                <li className="previous disabled"><a><span aria-hidden="true">&larr;</span> Previous</a></li>
+            )
+        } else {
+            return (
+                <li className="previous"><a onClick={this.handleClickPrevious.bind(this)}><span aria-hidden="true">&larr;</span> Previous</a></li>
+            )
+        }
+    }
+
+    getNextLink() {
+        if (manualState.getCurrentItem() < (manualState.getItems().length - 1)) {
+            return (
+                <li className="next"><a onClick={this.handleClickNext.bind(this)}>Next <span aria-hidden="true">&rarr;</span></a></li>
+            )
+        } else {
+            return (
+                <li className="next disabled"><a>Next <span aria-hidden="true">&rarr;</span></a></li>
+            )
+        }
+    }
 
     render() {
         return (
@@ -486,8 +519,14 @@ class Manual extends React.Component {
                     </div>
 
                     <div className="jumbotron">
-                        {manualState.getCurrentPage(this.state.selected)}
+                        {manualState.getCurrentPage()}
                     </div>
+                    <nav aria-label="Page">
+                        <ul className="pager">
+                            {this.getPreviousLink()}
+                            {this.getNextLink()}
+                        </ul>
+                    </nav>
                 </div>
                 <Footer/>
             </div>
@@ -522,7 +561,9 @@ class Charts extends React.Component {
 ReactDOM.render((
     <Router history={hashHistory}>
         <Route path="/" component={App}/>
-        <Route path="/manual" component={Manual}/>
+        <Route path="/manual" component={Manual}>
+            <Route path="/manual/:sectionId" component={Manual}/>
+        </Route>
         <Route path="/charts" component={Charts}/>
     </Router>
 ), document.getElementById('content'));
