@@ -43,12 +43,12 @@ class ManualState {
         this.currentItem = value;
     }
 
-    getCurrentPage() {
-        switch (this.currentItem) {
+    getCurrentPage(item) {
+        switch (parseInt(item)) {
             case 0: // General Information
                 return (
                     <div>
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[item]}</strong></h3>
                         <p><img src="img/collage.png"/></p>
                         <li>MX Mariner is a basic chart plotting program for Android.</li>
                         <li>MX Mariner has 3 map modes: Raster Charts, Roadmap, and
@@ -67,7 +67,7 @@ class ManualState {
             case 1: // Installing Chart Regions
                 return (
                     <div>
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[item]}</strong></h3>
                         <img src="img/coverage2.png"/>
                         <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
                         <img className="shot" src="img/noaa.png"/>&nbsp;&nbsp;&nbsp;<img className="shot"
@@ -104,7 +104,7 @@ class ManualState {
             case 2: // Uninstalling Chart Regions
                 return (
                     <div>
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[item]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
                         <li>Long press on an installed or partially downloaded region and choose "OK" to delete it.</li>
                         <li>Deleted regions are completely removed from device SD Card.</li>
@@ -114,7 +114,7 @@ class ManualState {
             case 3: // Updating Chart Regions
                 return (
                     <div>
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[item]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
                         <li>When an updated region file is available for an an installed region, the region will be
                             labeled with an &quot;update available&quot; tag in yellow.
@@ -125,7 +125,7 @@ class ManualState {
             case 4: // Configuring Storage
                 return (
                     <div>
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[item]}</strong></h3>
                         <li>Menu--&gt; Settings --&gt; Storage</li>
                         <li>This will configure which storage device (ex internal or external) MX Mariner stores data
                             to.
@@ -138,7 +138,7 @@ class ManualState {
             case 5: // Display Settings and Features
                 return (
                     <div>
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[item]}</strong></h3>
                         <li>The chart/map display settings can be quickly changed by pressing Menu --&gt; Display</li>
                         <li>The Map Type (Raster Charts, Roadmap, Satellite) can be quickly changed using the Map Type
                             drop down.
@@ -268,6 +268,8 @@ class Menu extends React.Component {
                         </div>
                         <div id="navbar" className="collapse navbar-collapse">
                             <ul className="nav navbar-nav">
+                                <li><Link to={"/manual"} href="">MANUAL</Link></li>
+                                <li><Link to={"/charts"} href="">CHARTS</Link></li>
                                 <li><a href="https://play.google.com/store/apps/details?id=mx.mariner">DOWNLOAD</a></li>
                             </ul>
                         </div>
@@ -443,7 +445,9 @@ class Review extends React.Component {
 class Manual extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            selected: manualState.getCurrentItem()
+        };
     }
 
     componentDidMount() {
@@ -461,7 +465,9 @@ class Manual extends React.Component {
 
     handleChange(event) {
         manualState.setCurrentItem(event.target.value);
-        this.setState({});
+        this.setState({
+            selected: manualState.getCurrentItem()
+        });
     };
 
     render() {
@@ -480,7 +486,7 @@ class Manual extends React.Component {
                     </div>
 
                     <div className="jumbotron">
-                        {manualState.getCurrentPage()}
+                        {manualState.getCurrentPage(this.state.selected)}
                     </div>
                 </div>
                 <Footer/>
