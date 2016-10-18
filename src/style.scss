@@ -56,6 +56,11 @@ body {
   }
 }
 
+.btn_img {
+  width: 44px;
+  height: auto;
+}
+
 .dark_layer {
   @extend .dark_layer_text;
   p {
