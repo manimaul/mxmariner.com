@@ -44,6 +44,23 @@ class ManualState {
         }
     }
 
+    getMenuButtonCopy() {
+        return (
+            <div>
+                <div className="note">Note: The Menu Button is the 3 horizontal lines on the top, left part
+                    of the screen when viewing the map / chart.
+                </div>
+                <div className="row standard_margin_bottom">
+                    <div className="col-xs-3 col-md-2">
+                        <LazyLoad height={"100%"}>
+                            <img className="img-responsive" src="images/menu_clip-nq8.png"/>
+                        </LazyLoad>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     getCurrentPage() {
         switch (this.currentItem) {
             case 0: // General Information
@@ -52,20 +69,21 @@ class ManualState {
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <h5>MX Mariner is a basic chart plotting program for Android.</h5>
                         <div className="row standard_margin_top_bottom">
-                            <li>There are 3 map modes: Offline Raster Charts, Road map, and Satellite
-                            </li>
-                            <li>Raster Chart mode works 100% offline (after initial one time
-                                chart region download)
-                            </li>
-                            <li>Road map mode requires an internet / data connection</li>
-                            <li>Satellite mode requires an internet / data connection</li>
-                            <li>ActiveCaptain interactive cruising guidebook</li>
-                            <li>Create and navigate routes and points</li>
-                            <li>Create and view tracks</li>
-                            <li>Measure tool</li>
-                            <li>Configurable units of measure and "World Magnetic Model"</li>
+                            <ul>
+                                <li>There are 3 map modes: Offline Raster Charts, Road map, and Satellite</li>
+                                <li>Raster Chart mode works 100% offline (after initial one time chart region
+                                    download)
+                                </li>
+                                <li>Road map mode requires an internet / data connection</li>
+                                <li>Satellite mode requires an internet / data connection</li>
+                                <li>ActiveCaptain interactive cruising guidebook</li>
+                                <li>Create and navigate routes and points</li>
+                                <li>Create and view tracks</li>
+                                <li>Measure tool</li>
+                                <li>Configurable units of measure and "World Magnetic Model"</li>
+                            </ul>
                         </div>
-                        <div className="row">
+                        <div className="row standard_margin_bottom">
                             <div className="col-xs-6 col-md-4">
                                 <LazyLoad height={"100%"}>
                                     <img className="img-responsive" src="images/all-nq8.png"/>
@@ -78,53 +96,67 @@ class ManualState {
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Menu Button --&gt; Settings --&gt; Install Charts
-                            <br /> **The Menu Button is the 3 horizontal lines on the top, left part of the screen when
-                            viewing the map / chart.
-                        </li>
-                        <li>LINZ and Brazilian Navy raster charts are divided into 2 regions.
-                        </li>
-                        <li>NOAA USA raster charts are divided into 20 regions</li>
-                        <li>UK raster charts are divided into 4 regions.
-                            <br />
-                            **UK region note: Each UK region is available as an in-app
-                            purchase. Each region can be downloaded and/or updated for 1year
-                            after purchase.
-                        </li>
-                        <li>Regions range in size from 80 to 500MB</li>
-                        <li>The regions will be stored in the &lt;storage&gt;/mxmariner directory on your device. On
-                            some android devices, this directory is an SD Card while others it is built in storage. You
-                            will need adequate storage space to download the chart regions you want to use.
-                        </li>
-                        <li>Simply tap on the region you would like to download to your device.</li>
-                        <li>It's recommend to download regions when connected to wifi or 4g.</li>
-                        <li>Pushing the back button during the download process will cancel the download.</li>
-                        <li>The download can be resumed at a later time if you cancel.</li>
-                        <li>Pushing the home button on your device allow you to do other task while the download
-                            continues.
-                        </li>
+                        <ul>
+                            <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
+                            {this.getMenuButtonCopy()}
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/chart_list-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
+                            <li>LINZ and Brazilian Navy raster charts are divided into 2 regions.
+                            </li>
+                            <li>NOAA USA raster charts are divided into 20 regions</li>
+                            <li>UK raster charts are divided into 4 regions.</li>
+                            <div className="note">Note: Each UK region is available as an in-app purchase. Each region
+                                can be downloaded and/or updated for 1year after purchase.
+                            </div>
+                            <li>Regions range in size from 80 to 500MB</li>
+                            <li>The regions will be stored in the &lt;storage&gt;/mxmariner directory on your device. On
+                                some android devices, this directory is an SD Card while others it is built in storage.
+                                You will need adequate storage space to download the chart regions you want to use.
+                            </li>
+                            <li>Simply tap on the region you would like to download to your device.</li>
+                            <li>It's recommend to download regions when connected to wifi or 4g.</li>
+                            <li>Pushing the back button during the download process will cancel the download.</li>
+                            <li>The download can be resumed at a later time if you cancel.</li>
+                            <li>Your download will continue if the screen is turned off or if you start other apps.
+                            </li>
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/chart_download-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
+                        </ul>
                     </div>
                 );
             case 2: // Uninstalling Chart Regions
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Menu Button --&gt; Settings --&gt; Install Charts
-                            <br /> **The Menu Button is the 3 horizontal lines on the top, left part of the screen when
-                            viewing the map / chart.
-                        </li>
+                        <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
+                        {this.getMenuButtonCopy()}
                         <li>Long press on an installed or partially downloaded region and choose "OK" to delete it.</li>
-                        <li>Deleted regions are completely removed from device SD Card.</li>
+                        <li>Deleted regions are completely removed from the device.</li>
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/chart_delete-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                     </div>
                 );
             case 3: // Updating Chart Regions
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Menu Button --&gt; Settings --&gt; Install Charts
-                            <br /> **The Menu Button is the 3 horizontal lines on the top, left part of the screen when
-                            viewing the map / chart.
-                        </li>
+                        <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
+                        {this.getMenuButtonCopy()}
                         <li>When an updated region file is available for an an installed region, the region will be
                             labeled with an &quot;update available&quot; tag in yellow.
                         </li>
@@ -151,7 +183,17 @@ class ManualState {
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>The chart/map display settings can be quickly changed by pressing Menu Button --&gt; Display</li>
+                        <li>The chart/map display settings can be quickly changed by pressing Menu Button --&gt;
+                            Display
+                        </li>
+                        {this.getMenuButtonCopy()}
+                        <div className="row standard_margin_bottom">
+                            <div className="col-xs-3 col-md-2">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/menu_clip-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                         <li>The Map Type (Raster Charts, Road map, Satellite) can be quickly changed using the Map Type
                             drop down.
                         </li>
@@ -196,9 +238,17 @@ class ManualState {
                         <li>When gps position is available a bearing, distance and position measure tool will appear
                             automatically when touching and/or panning chart.
                         </li>
-                        <li>Zoom buttons can be turned on/off in: Menu Button --&gt; Settings
-                            --&gt; View --&gt; Zoom Buttons
+                        <li>Zoom buttons can be turned on/off in: Menu Button --&gt; Settings --&gt; View --&gt; Zoom
+                            Buttons
                         </li>
+                        {this.getMenuButtonCopy()}
+                        <div className="row standard_margin_bottom">
+                            <div className="col-xs-3 col-md-2">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/menu_clip-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                     </div>
                 );
             case 8:    // GPS follow
@@ -247,7 +297,8 @@ class ManualState {
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the extra tool buttons.
+                        <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the
+                            extra tool buttons.
                         </li>
                         <li>Pan/Zoom the chart to where you would like to start your
                             measurement.
@@ -273,6 +324,14 @@ class ManualState {
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Units</li>
+                        {this.getMenuButtonCopy()}
+                        <div className="row standard_margin_bottom">
+                            <div className="col-xs-3 col-md-2">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/menu_clip-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                         <li>Position (latitude, longitude) can be displayed as Degrees, Degrees Minutes, Degrees Minutes
                             seconds
                         </li>
@@ -287,7 +346,8 @@ class ManualState {
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the extra tool buttons.
+                        <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the
+                            extra tool buttons.
                         </li>
                         <li>Pan/Zoom the chart to where you would like to place your waypoint OR push the gps follow
                             button to place a waypoint at your current position.
@@ -323,7 +383,7 @@ class ManualState {
                             </div>
                         </div>
                         <li>You can choose activate, details, move, hide or delete the selected waypoint.</li>
-                        <li>Select <strong>Activate</strong> to naviagate to a waypoint.</li>
+                        <li>Select <strong>Activate</strong> to navigate to a waypoint.</li>
                         <li>Once a waypoint is activated bearing and range will be shown on the heads up display below
                             speed and course
                         </li>
@@ -331,8 +391,10 @@ class ManualState {
                         <li>Select <strong>Details</strong> to bring up a dialog and view or change a waypoint icon,
                             name, description or coordinates.
                             <li>Select <strong>Move</strong> to drag a waypoint to a new location on the map.</li>
-                            <li>Pan the map and use the small <img width="16" height="16" src="images/drop.png"/> button to drop the waypoint
-                                where the cursor lies or the small <img width="16" height="16" src="images/done.png"/> button to cancel.
+                            <li>Pan the map and use the small <img className="map_point" src="images/drop.png"/> button
+                                to drop the waypoint
+                                where the cursor lies or the small <img className="map_point" src="images/done.png"/>
+                                button to cancel.
                             </li>
                             <div className="row standard_margin_top_bottom">
                                 <div className="col-xs-6 col-md-4">
@@ -354,16 +416,16 @@ class ManualState {
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <li>Note: GPS must have a position lock for Track recording to start</li>
-                        <li>Push the extra tools button
-                            <img className="btn_img" src="images/menu.png"/>
-                            to show the extra tool buttons.
+                        <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the
+                            extra tool buttons.
                         </li>
                         <li>Push the Track button
                             <img className="btn_img" src="images/trackoff.png"/>
                             and choose "Yes" when presented with "Start recording track?" dialog.
                         </li>
-                        <li>Track button will indicate tracking is in progress by turning red.
-                            <img className="btn_img" src="images/trackon.png"/></li>
+                        <li>Track button will indicate tracking is in progress by turning orange. <img
+                            className="btn_img" src="images/trackon.png"/>
+                        </li>
                         <li>Stop tracking by pushing the Track button a second time. You will be presented with a dialog
                             where you can add a name and description to your track or discard your track.
                         </li>
@@ -373,21 +435,25 @@ class ManualState {
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Tap on the track icon on the map and an action dialog will be
+                        <li>Tap on the track icon <img className="map_point" src="images/trackstart.png"/> on the map
+                            and an action dialog will be
                             presented.
                         </li>
-                        <img src="images/trackstart.png"/>
-                        <br />
-                        <br />
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/track_action_dialog-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                         <li>You can choose details, hide or delete the selected track.</li>
                         <li>Select <strong>Details</strong> to bring up a dialog and view or change a track name and
                             description.
-                            <br />
-                            <li>Select <strong>Hide</strong> to hide the track.</li>
-                            <br />
-                            <li>Select <strong>Delete</strong> to delete the track.</li>
-                            <li>Note: hidden tracks can be unhidden using the "Marks
-                                Manager"
+                            <li>Select <strong>Hide</strong> to hide the track from the map/chart.</li>
+                            <li>Select <strong>Delete</strong> to delete the track from the map/chart and persisted
+                                storage.
+                            </li>
+                            <li>Note: hidden tracks can be unhidden using the "Marks Manager"
                             </li>
                         </li>
                     </div>
@@ -396,22 +462,22 @@ class ManualState {
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Push the extra tools button
-                            <img className="btn_img" src="images/menu.png"/>
-                            to show the extra tool buttons.
+                        <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the
+                            extra tool buttons.
                         </li>
                         <li>Pan/Zoom the chart to where you would like to start your route.</li>
                         <li>Next, push the route button to start creating a new route.
                             <img className="btn_img" src="images/route.png"/>
                         </li>
-                        <li>Pan/zoom the chart and push the route button
-                            <img className="btn_img" src="images/route.png"/>
-                            again for each point you want to place in the route.
-                            <img src="images/routestart.png"/>
+                        <li>Pan/zoom the chart and push the route button <img className="btn_img"
+                                                                              src="images/route.png"/> again for each
+                            point you want to place in the route. <img className="map_point"
+                                                                       src="images/routestart.png"/>
                         </li>
                         <li>Pan/zoom the chart to the last point in the route and finish
                             the route by pushing the return button.
-                            <img src="images/done.png"/> A dialog will be presented where you can add route details,
+                            <img className="map_point" src="images/done.png"/> A dialog will be presented where you can
+                            add route details,
                             save or
                             discard route.
                         </li>
@@ -421,46 +487,54 @@ class ManualState {
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Tap on the route icon on the map and an action dialog will be
-                            presented.
+                        <li>Tap on the route <img className="map_point" src="images/routestart.png"/> icon on the map
+                            and an action dialog will be presented.
                         </li>
-                        <img src="images/routestart.png"/>
-                        <br />
-                        <br />
-                        <li>You can choose activate, details, edit points, extend, hide or delete the selected route.
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/route_action_dialog-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
+                        <li>You can choose Activate, Details, Edit Points, Reverse, Extend, Hide or Delete the selected
+                            route.
                         </li>
-                        <br />
-                        <li>Select <strong>Activate</strong> to naviagate along a route.</li>
-                        <li>Once a route is activated, bearing and range will be shown on the heads up display below
-                            speed and course. A dashed blue course line will also be drawn on the map to the next
-                            best point along the route according to current position and course. Deactivate a route by
-                            tapping on route icon and choosing deactivate. OR Routes can also be deactivated by pushing
-                            the
-                            <img className="btn_img" src="images/done.png"/>
-                            button on the heads up display.
+                        <li>Select <strong>Activate</strong> to navigate along a route.
+                            <li>Once a route is activated, bearing and range will be shown on the heads up display below
+                                speed and course. A dashed blue course line will also be drawn on the map to the next
+                                best point along the route according to current position and course. Deactivate a route
+                                by
+                                tapping on route icon and choosing deactivate. OR Routes can also be deactivated by
+                                pushing
+                                the <img className="map_point" src="images/done.png"/> button on the heads up display.
+                            </li>
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/route-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
                         </li>
-                        <img src="images/rte_active.png"/>
-                        <br />
                         <li>Select <strong>Details</strong> to bring up a dialog and view or change a route name,
                             description, departure information and plan speed.
+                        </li>
+                        <li>Select <strong>Edit Points</strong> to put the route into edit mode where you can then
+                            move, insert or delete individual route points. See <strong>Route Edit Points
+                                Mode</strong> below.
+                            Note: The large <img className="map_point" src="images/done.png"/> button returns the route
+                            to normal mode.
+                        </li>
+                        <br />
+                        <li>Select <strong>Extend</strong> to add additional point(s) to the end of a route. The
+                            <img className="map_point" src="images/done.png"/> button finishes the route extension.
                             <br />
-                            <li>Select <strong>Edit Points</strong> to put the route into edit mode where you can then
-                                Move, Insert and Delete individual route points. See <strong>Route Edit Points
-                                    Mode</strong> below. The large <img className="btn_img" src="images/done.png"/>
-                                button
-                                returns
-                                the route to normal mode.
-                            </li>
+                            <li>Select <strong>Hide</strong> to hide the route.</li>
                             <br />
-                            <li>Select <strong>Extend</strong> to add additional point(s) to the end of a route. The
-                                <img className="btn_img" src="images/done.png"/> button finishes the route extension.
-                                <br />
-                                <li>Select <strong>Hide</strong> to hide the route.</li>
-                                <br />
-                                <li>Select <strong>Delete</strong> to delete the route.</li>
-                                <li>Note: hidden routes can be unhidden using the "Marks
-                                    Manager"
-                                </li>
+                            <li>Select <strong>Delete</strong> to delete the route.</li>
+                            <li>Note: hidden routes can be unhidden using the "Marks
+                                Manager"
                             </li>
                         </li>
                     </div>
@@ -478,13 +552,11 @@ class ManualState {
                         </li>
                         <br />
                         <li>Select <strong>Move</strong> to move route point: Pan the map and use the small <img
-                            height="16" width="16" className="btn_img" src="images/drop.png"/> button to drop the route
-                            point where
-                            the cursor lies or the small <img height="16" width="16" className="btn_img"
-                                                              src="images/done.png"/>
-                            button to cancel the move.
+                            className="map_point" src="images/drop.png"/> button to drop the route point where the
+                            cursor lies or the small <img className="map_point" src="images/done.png"/> button to cancel
+                            the move.
                         </li>
-                        <img src="images/rte_point_move_.png"/>
+                        <img className="map_point" src="images/rte_point_move_.png"/>
                         <br />
                         <li>Select <strong>Insert After</strong> to insert a new route point between the selected one
                             and next route point.
@@ -499,8 +571,7 @@ class ManualState {
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <li>Use the Marks Manager to manage marks: Waypoints, Tracks and GPX Backups</li>
                         <li>Menu Button --&gt; Settings --&gt; Marks Manager gets you to the Marks Manager
-                            <br />
-                            <br />
+                            {this.getMenuButtonCopy()}
                             <h4>Waypoints Tab</h4>
                             <img className="shot" src="images/mm_wpts.png"/>
                             <br />
