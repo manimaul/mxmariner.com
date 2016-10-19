@@ -197,7 +197,8 @@ class ManualState {
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <li>The chart/map display settings can be quickly changed by pressing Menu Button and the map
                             type (Raster Charts, Road map, Satellite) can be quickly changed using the map yype drop
-                            down.</li>
+                            down.
+                        </li>
                         <div className="row standard_margin_top_bottom">
                             <div className="col-xs-6 col-md-4">
                                 <LazyLoad height={"100%"}>
@@ -260,55 +261,49 @@ class ManualState {
                             Buttons
                         </li>
                         {this.getMenuButtonCopy()}
-                        <div className="row standard_margin_bottom">
-                            <div className="col-xs-3 col-md-2">
-                                <LazyLoad height={"100%"}>
-                                    <img className="img-responsive" src="images/menu_clip-nq8.png"/>
-                                </LazyLoad>
-                            </div>
-                        </div>
                     </div>
                 );
             case 8:    // GPS follow
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Enable location on your device Settings --&gt; Location &amp; Security --&gt; Use GPS
-                            satellites (checked)
-                        </li>
-                        <li>Enable gps follow (north up) by pushing the follow button.
-                            <img className="btn_img" src="images/followde.png"/></li>
-                        <li>The follow button will turn red with the ship angled indicating follow mode is north up.
-                            <img className="btn_img" src="images/follownu.png"/></li>
-                        <li>Enable gps follow (head/course up) by pushing the follow button
-                            a second time.
-                        </li>
-                        <li>The follow button ship will angle straight up indicating follow
-                            mode is course or head up.
-                            <img className="btn_img" src="images/followhu.png"/></li>
-                        <li>Disengage gps follow by panning the chart.</li>
-                        <li>Follow button will switch back to white when follow is disengaged.
-                            <img className="btn_img" src="images/followde.png"/>
-                        </li>
-                        <li>When gps has speed and course, position is indicated by red
-                            ship
-                            <img className="btn_img" src="images/ship.png"/>
-                            oriented according to present course.**
-                        </li>
-                        <li>When gps has no speed and course, position is indicated by red circle.**
-                            <img src="images/circle.png"/></li>
-                        <li>When gps has not received a fix for 3 seconds position indicator becomes greyed
-                            <img src="images/shipgrey.png"/>
-                            <img src="images/circlegrey.png"/>
-                        </li>
-                        <li>When gps accuracy is low, approximate error is indicated in
-                            chart view by semi-transparent grey circle around approximate
-                            position.
-                        </li>
-                        <br />
-                        **Ship orientation will orientate towards heading if
-                        "Heading" is selected in the "Orientation Mode" under the sensor
-                        options.
+                        <ul>
+                            <li>Enable location on your device Settings --&gt; Location &amp; Security --&gt; Use GPS
+                                satellites (checked)
+                            </li>
+                            <li>Enable gps follow (north up) by pushing the follow button.
+                                <img className="btn_img" src="images/followde.png"/></li>
+                            <li>The follow button will turn red with the ship angled indicating follow mode is north up.
+                                <img className="btn_img" src="images/follownu.png"/></li>
+                            <li>Enable gps follow (head/course up) by pushing the follow button
+                                a second time.
+                            </li>
+                            <li>The follow button ship will angle straight up indicating follow
+                                mode is course or head up.
+                                <img className="btn_img" src="images/followhu.png"/></li>
+                            <li>Disengage gps follow by panning the chart.</li>
+                            <li>Follow button will switch back to white when follow is disengaged.
+                                <img className="btn_img" src="images/followde.png"/>
+                            </li>
+                            <li>When gps has speed and course, position is indicated by red ship
+                                <img className="btn_img" src="images/ship.png"/> oriented according to present course.
+                            </li>
+                            <ul>
+                                <li>Ship orientation will orientate towards heading if "Heading" is selected in the
+                                    "Orientation Mode" under the sensor options.
+                                </li>
+                            </ul>
+                            <li>When gps has no speed and course, position is indicated by red circle.
+                                <img src="images/circle.png"/></li>
+                            <li>When gps has not received a fix for 3 seconds position indicator becomes greyed
+                                <img src="images/shipgrey.png"/>
+                                <img src="images/circlegrey.png"/>
+                            </li>
+                            <li>When gps accuracy is low, approximate error is indicated in
+                                chart view by semi-transparent grey circle around approximate
+                                position.
+                            </li>
+                        </ul>
                     </div>
                 );
             case 9:    // Measure Tool
@@ -343,21 +338,49 @@ class ManualState {
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Units</li>
                         {this.getMenuButtonCopy()}
-                        <div className="row standard_margin_bottom">
-                            <div className="col-xs-3 col-md-2">
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
                                 <LazyLoad height={"100%"}>
-                                    <img className="img-responsive" src="images/menu_clip-nq8.png"/>
+                                    <img className="img-responsive" src="images/units-nq8.png"/>
                                 </LazyLoad>
                             </div>
                         </div>
                         <li>Position (latitude, longitude) can be displayed as Degrees, Degrees Minutes, Degrees Minutes
                             seconds
                         </li>
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/units_pos-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                         <li>Speed can be displayed as Knots, Mph, Kph</li>
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/units_spd-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                         <li>Distance can be displayed as Nautical, Statute, Metric</li>
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/units_dist-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                         <li>Bearing and Course can be displayed as True or Magnetic Magnetic bearings are calculated
                             using the World Magnetic Model courtesy of the US National Geospacial Intelligence Agency
                         </li>
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/units_brng_course-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                     </div>
                 );
             case 11:    // Adding Waypoints
@@ -368,7 +391,8 @@ class ManualState {
                             extra tool buttons.
                         </li>
                         <li>Pan/Zoom the chart to where you would like to place your waypoint OR push the gps follow
-                            button to place a waypoint at your current position.
+                            <img className="btn_img" src="images/followde.png"/> button to place a waypoint at your
+                            current position.
                         </li>
                         <li>Next, push the add waypoint button.
                             <img className="btn_img" src="images/waypoint.png"/></li>
@@ -405,13 +429,13 @@ class ManualState {
                         <li>Once a waypoint is activated bearing and range will be shown on the heads up display below
                             speed and course
                         </li>
-                        <br />
                         <li>Select <strong>Details</strong> to bring up a dialog and view or change a waypoint icon,
                             name, description or coordinates.
                             <li>Select <strong>Move</strong> to drag a waypoint to a new location on the map.</li>
                             <li>Pan the map and use the small <img className="map_point" src="images/drop.png"/> button
                                 to drop the waypoint
-                                where the cursor lies or the small <img className="map_point" src="images/done.png"/>
+                                where the cursor lies or the small
+                                <img className="map_point" src="images/done.png"/>&nbsp;
                                 button to cancel.
                             </li>
                             <div className="row standard_margin_top_bottom">
@@ -421,11 +445,12 @@ class ManualState {
                                     </LazyLoad>
                                 </div>
                             </div>
-                            <li>Select <strong>Hide</strong> to hide the waypoint.</li>
-                            <li>Select <strong>Delete</strong> to delete the waypoint.</li>
-                            <li>Note: hidden waypoints can be unhidden using the "Marks
-                                Manager"
+                            <li>Select <strong>Hide</strong> to hide the waypoint from the map/chart.</li>
+                            <li>Select <strong>Delete</strong> to delete the waypoint from the map/chart and persisted
+                                storage.
                             </li>
+                            <div className="note">Note: hidden waypoints can be unhidden using the "Marks Manager"
+                            </div>
                         </li>
                     </div>
                 );
@@ -433,7 +458,7 @@ class ManualState {
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Note: GPS must have a position lock for Track recording to start</li>
+                        <div className="note">Note: GPS must have a position lock for Track recording to start</div>
                         <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the
                             extra tool buttons.
                         </li>
@@ -471,8 +496,8 @@ class ManualState {
                             <li>Select <strong>Delete</strong> to delete the track from the map/chart and persisted
                                 storage.
                             </li>
-                            <li>Note: hidden tracks can be unhidden using the "Marks Manager"
-                            </li>
+                            <div className="note">Note: hidden tracks can be unhidden using the "Marks Manager"
+                            </div>
                         </li>
                     </div>
                 );
@@ -487,17 +512,13 @@ class ManualState {
                         <li>Next, push the route button to start creating a new route.
                             <img className="btn_img" src="images/route.png"/>
                         </li>
-                        <li>Pan/zoom the chart and push the route button <img className="btn_img"
-                                                                              src="images/route.png"/> again for each
-                            point you want to place in the route. <img className="map_point"
-                                                                       src="images/routestart.png"/>
+                        <li>Pan/zoom the chart and push the route
+                            button<img className="btn_img" src="images/route.png"/> again for each point you want to
+                            place in the route. <img className="map_point" src="images/routestart.png"/>
                         </li>
-                        <li>Pan/zoom the chart to the last point in the route and finish
-                            the route by pushing the return button.
-                            <img className="map_point" src="images/done.png"/> A dialog will be presented where you can
-                            add route details,
-                            save or
-                            discard route.
+                        <li>Pan/zoom the chart to the last point in the route and finish the route by pushing the return
+                            button. <img className="map_point" src="images/done.png"/> A dialog will be presented where
+                            you can add route details, save or discard route.
                         </li>
                     </div>
                 );
@@ -505,81 +526,93 @@ class ManualState {
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Tap on the route <img className="map_point" src="images/routestart.png"/> icon on the map
-                            and an action dialog will be presented.
-                        </li>
-                        <div className="row standard_margin_top_bottom">
-                            <div className="col-xs-6 col-md-4">
-                                <LazyLoad height={"100%"}>
-                                    <img className="img-responsive" src="images/route_action_dialog-nq8.png"/>
-                                </LazyLoad>
-                            </div>
-                        </div>
-                        <li>You can choose Activate, Details, Edit Points, Reverse, Extend, Hide or Delete the selected
-                            route.
-                        </li>
-                        <li>Select <strong>Activate</strong> to navigate along a route.
-                            <li>Once a route is activated, bearing and range will be shown on the heads up display below
-                                speed and course. A dashed blue course line will also be drawn on the map to the next
-                                best point along the route according to current position and course. Deactivate a route
-                                by
-                                tapping on route icon and choosing deactivate. OR Routes can also be deactivated by
-                                pushing
-                                the <img className="map_point" src="images/done.png"/> button on the heads up display.
+                        <ul>
+                            <li>Tap on the route <img className="map_point" src="images/routestart.png"/> icon on the
+                                map and an action dialog will be presented.
                             </li>
                             <div className="row standard_margin_top_bottom">
                                 <div className="col-xs-6 col-md-4">
                                     <LazyLoad height={"100%"}>
-                                        <img className="img-responsive" src="images/route-nq8.png"/>
+                                        <img className="img-responsive" src="images/route_action_dialog-nq8.png"/>
                                     </LazyLoad>
                                 </div>
                             </div>
-                        </li>
-                        <li>Select <strong>Details</strong> to bring up a dialog and view or change a route name,
-                            description, departure information and plan speed.
-                        </li>
-                        <li>Select <strong>Edit Points</strong> to put the route into edit mode where you can then
-                            move, insert or delete individual route points. See <strong>Route Edit Points
-                                Mode</strong> below.
-                            Note: The large <img className="map_point" src="images/done.png"/> button returns the route
-                            to normal mode.
-                        </li>
-                        <br />
-                        <li>Select <strong>Extend</strong> to add additional point(s) to the end of a route. The
-                            <img className="map_point" src="images/done.png"/> button finishes the route extension.
-                            <br />
-                            <li>Select <strong>Hide</strong> to hide the route.</li>
-                            <br />
-                            <li>Select <strong>Delete</strong> to delete the route.</li>
-                            <li>Note: hidden routes can be unhidden using the "Marks
-                                Manager"
+                            <li>You can choose Activate, Details, Edit Points, Reverse, Extend, Hide or Delete the
+                                selected route.
                             </li>
-                        </li>
+                            <li>Select <strong>Activate</strong> to navigate along a route.
+                                <li>Once a route is activated, bearing and range will be shown on the heads up display
+                                    below speed and course. A dashed blue course line will also be drawn on the map to
+                                    the next best point along the route according to current position and course.
+                                    Deactivate a route by tapping on route icon and choosing deactivate OR Routes can
+                                    also be deactivated by pushing the&nbsp;
+                                    <img className="map_point" src="images/done.png"/> button on the heads up display.
+                                </li>
+                                <div className="row standard_margin_top_bottom">
+                                    <div className="col-xs-6 col-md-4">
+                                        <LazyLoad height={"100%"}>
+                                            <img className="img-responsive" src="images/route-nq8.png"/>
+                                        </LazyLoad>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>Select <strong>Details</strong> to bring up a dialog and view or change a route name,
+                                description, departure information and plan speed.
+                            </li>
+                            <li>Select <strong>Edit Points</strong> to put the route into edit mode where you can then
+                                move, insert or delete individual route points.
+                            </li>
+                            <ul>
+                                <li>See: <Link to={"/manual/17"} href="">Route Edit Points Mode</Link></li>
+                            </ul>
+                            <div className="note">Note: The large
+                                &nbsp;<img className="map_point" src="images/done.png"/>&nbsp;
+                                button returns the route to normal mode.
+                            </div>
+
+                            <li>Select <strong>Extend</strong> to add additional point(s) to the end of a route. The
+                                &nbsp;<img className="map_point" src="images/done.png"/> button finishes the route
+                                extension.
+                            </li>
+                            <li>Select <strong>Hide</strong> to hide the route.</li>
+                            <li>Select <strong>Delete</strong> to delete the route.</li>
+                            <li>Note: hidden routes can be unhidden using the "Marks Manager"</li>
+                        </ul>
                     </div>
                 );
             case 17:    // Route Edit Points Mode
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Note: see <strong>Working With Routes</strong> to learn how to put a route into and out of
-                            edit point mode.
+                        <div className="note">Note: see <Link to={"/manual/16"} href="">Working with Routes</Link> to
+                            learn how to put a route into and out of edit point mode.
+                        </div>
+                        <li>When a route is in edit mode all points in the route will display an icon:
+                            &nbsp;<img className="map_point" src="images/routeedit.png"/> which can be tapped. When
+                            tapped, a route point can be moved, inserted after, or deleted.
                         </li>
-                        <li>When a route is in edit mode all points in the route will display an icon: <img
-                            src="images/routeedit.png"/> which can be tapped. When tapped, a route point can be moved,
-                            inserted after, or deleted.
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/route_edit_action_dialog-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
+                        <li>Select <strong>Move</strong> to move route point: Pan the map and use the small
+                            &nbsp;<img className="map_point" src="images/drop.png"/> button to drop the route point
+                            where the cursor lies or the small <img className="map_point" src="images/done.png"/> button
+                            to cancel the move.
                         </li>
-                        <br />
-                        <li>Select <strong>Move</strong> to move route point: Pan the map and use the small <img
-                            className="map_point" src="images/drop.png"/> button to drop the route point where the
-                            cursor lies or the small <img className="map_point" src="images/done.png"/> button to cancel
-                            the move.
-                        </li>
-                        <img className="map_point" src="images/rte_point_move_.png"/>
-                        <br />
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/route_edit-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                         <li>Select <strong>Insert After</strong> to insert a new route point between the selected one
                             and next route point.
                         </li>
-                        <br />
                         <li>Select <strong>Delete</strong> to delete the selected route point.</li>
                     </div>
                 );
@@ -590,89 +623,154 @@ class ManualState {
                         <li>Use the Marks Manager to manage marks: Waypoints, Tracks and GPX Backups</li>
                         <li>Menu Button --&gt; Settings --&gt; Marks Manager gets you to the Marks Manager
                             {this.getMenuButtonCopy()}
-                            <h4>Waypoints Tab</h4>
-                            <img className="shot" src="images/mm_wpts.png"/>
-                            <br />
-                            <br />
-                            <li>The list of waypoints can be sorted by name or distance from your last gps position by
-                                pushing Menu Button--&gt;Sort By Name or Menu Button--&gt;Sort By Distance
+                            <h3>Waypoints Tab</h3>
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_wpts-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_wpts_action_dialog-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
+                            <li>Pushing the Menu Button <img className="btn_img" src="images/mainmenu.png"/> allows you
+                                to:
                             </li>
-                            <li>Waypoints can be shown or hidden in map/chart view by tapping on the waypoint(s) you
-                                would like to show or hide so that a green check mark is next to them.
-                                <img src="images/check.png"/>
-                                Then pushing Menu Button--&gt;Toggle Selected Visibility. The waypoint icon will
-                                indicate if it is hidden in the list with this icon:
-                                <img src="images/hidden.png"/>
+                            <ul>
+                                <li><strong>Toggle selected:</strong> toggles all items current selection state
+                                    &nbsp;<img className="map_point" src="images/check.png"/></li>
+                                <li><strong>Clear selected:</strong> clears all the selection checkboxes</li>
+                                <li><strong>Toggle selected hidden or shown:</strong> toggles the hidden/shown state of
+                                    all items that have a selection check mark.
+                                    <img className="map_point" src="images/check.png"/>
+                                </li>
+                                <div className="note">Note: Currently hidden items will be indicated by
+                                    &nbsp;<img className="map_point" src="images/hidden.png"/></div>
+                                <li><strong>Sort by name:</strong> Sorts the entire list by name.</li>
+                                <li><strong>Sort by distance:</strong> Sorts the entire list by distance.</li>
+                                <li><strong>Delete selected:</strong> Deletes all items that have a selection check
+                                    mark. <img className="map_point" src="images/check.png"/></li>
+                            </ul>
+                            <li>Individual waypoints can be viewed by long pressing on them and choosing <strong>"Go to
+                                mark and set shown".</strong>
                             </li>
-                            <li>Waypoints can be deleted by tapping on the waypoint(s) you would like to delete so that
-                                a green check mark is next to them. Then pushing Menu Button--&gt;Delete Selected. Push
-                                the "Yes" or "No button to confirm or decline deleting the selected waypoints.
-                            </li>
-                            <li>Individual waypoints can be viewed by long pressing on the desired waypoint icon until
-                                an action dialog is presented. Choose "Zoom To" to view the waypoint. You will be
-                                brought back to the map/chart view showing the waypoint. Of course now that waypoint can
-                                now be edited by tapping on it in map/chart view.
-                                <br />
-                                <br />
-                            </li>
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_wpt_lp_ad-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
                             <h4>Tracks Tab</h4>
-                            <img className="shot" src="images/mm_trk.png"/>
-                            <li>The list of tracks can be sorted by name or date by pushing Menu Button--&gt;Sort By
-                                Name or Menu Button--&gt;Sort By Date
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_trk-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_trk_action_dialog-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
+                            <li>Pushing the Menu Button <img className="btn_img" src="images/mainmenu.png"/> allows you
+                                to:
                             </li>
-                            <li>Tracks can be shown or hidden in map/chart view by tapping on the tracks(s) you
-                                would like to show or hide so that a green check mark is next to them.
-                                <img src="images/check.png"/>
-                                Then pushing Menu Button--&gt;Toggle Selected Visibility. The track icon will
-                                indicate if it is hidden in the list with this icon:
-                                <img src="images/hidden.png"/>
+                            <ul>
+                                <li><strong>Toggle selected:</strong> toggles all items current selection state
+                                    &nbsp;<img className="map_point" src="images/check.png"/></li>
+                                <li><strong>Clear selected:</strong> clears all the selection checkboxes</li>
+                                <li><strong>Toggle selected hidden or shown:</strong> toggles the hidden/shown state of
+                                    all items that have a selection check mark.
+                                    <img className="map_point" src="images/check.png"/>
+                                </li>
+                                <div className="note">Note: Currently hidden items will be indicated by
+                                    &nbsp;<img className="map_point" src="images/hidden.png"/></div>
+                                <li><strong>Sort by name:</strong> Sorts the entire list by name.</li>
+                                <li><strong>Sort by date:</strong> Sorts the entire list by date.</li>
+                                <li><strong>Delete selected:</strong> Deletes all items that have a selection check
+                                    mark. <img className="map_point" src="images/check.png"/></li>
+                            </ul>
+                            <li>Individual tracks can be viewed by long pressing on them and choosing <strong>Go to
+                                mark and set shown.</strong>
                             </li>
-                            <li>Tracks can be deleted by tapping on the tracks(s) you would like to delete so that a
-                                green check mark is next to them. Then
-                                pushing Menu Button--&gt;Delete Selected. Push the "Yes" or "No button to confirm or
-                                decline deleting the selected tracks.
+                            <li>Individual track details can be edited by long pressing on them and choosing <strong>Edit</strong>
                             </li>
-                            <li>Individual tracks can be viewed by long pressing on the desired track icon until an
-                                action dialog is presented. Choose "Zoom To" to view the track. You will be brought
-                                back to the map/chart view showing the track start point.
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_trk_lp_ad-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_trk_lp_edit-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
+                            <h3>Routes Tab</h3>
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_rte-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_rte_action_dialog-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_rte_lp_ad-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
+                            <li>Pushing the Menu Button <img className="btn_img" src="images/mainmenu.png"/> allows you
+                                to:
                             </li>
-                            <li>Individual tracks can be edited by long pressing on the desired track icon untul an
-                                action dialog is presented. Choose "Edit" to edit the track. You will be presented
-                                with a dialog where you can edit the track name and description.
-                                <br />
-                                <br />
-                            </li>
+                            <ul>
+                                <li><strong>Toggle selected:</strong> toggles all items current selection state
+                                    &nbsp;<img className="map_point" src="images/check.png"/></li>
+                                <li><strong>Clear selected:</strong> clears all the selection checkboxes</li>
+                                <li><strong>Toggle selected hidden or shown:</strong> toggles the hidden/shown state of
+                                    all items that have a selection check mark.
+                                    <img className="map_point" src="images/check.png"/>
+                                </li>
+                                <div className="note">Note: Currently hidden items will be indicated by
+                                    &nbsp;<img className="map_point" src="images/hidden.png"/></div>
+                                <li><strong>Delete selected:</strong> Deletes all items that have a selection check
+                                    mark. <img className="map_point" src="images/check.png"/></li>
+                            </ul>
 
-                            <h4>Routes Tab</h4>
-                            <img className="shot" src="images/mm_rtes.png"/>
-                            <li>Routes can be shown or hidden in map/chart view by tapping on the route(s) you
-                                would like to show or hide so that a green check mark is next to them.
-                                <img src="images/check.png"/>
-                                Then pushing Menu Button--&gt;Toggle Selected Visibility. The route icon will
-                                indicate if it is hidden in the list with this icon:
-                                <img src="images/hidden.png"/>
-                            </li>
-                            <li>Routes can be deleted by tapping on the route(s) you would like to delete so
-                                that a green check mark is next to them. Then pushing Menu Button--&gt;Delete
-                                Selected. Push the "Yes" or "No button to confirm or decline deleting the
-                                selected routes.
-                            </li>
-                            <li>Individual routes can be viewed by long pressing on the desired waypoint icon
-                                until an action dialog is presented. Choose "Zoom To" to view the waypoint. You
-                                will be brought back to the map/chart view showing the waypoint. Of course now
-                                that waypoint can now be edited by tapping on it in map/chart view.
-                                <br />
-                                <br />
-                            </li>
-
-                            <h4>GPX Backups Tab</h4>
-                            <img className="shot" src="images/mm_gpx.png"/>
+                            <h3>GPX Backups Tab</h3>
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_gpx-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_gpx_action_dialog-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_gpx_lp_ad-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
                             <li>All waypoints and tracks can be backed up to a GPX file by pushing Menu
                                 Button--&gt;Create new GPX/Backup.
                             </li>
                             <li>GPXs can be deleted by tapping on the GPX(s) you would like to delete so
                                 that a green check mark is next to them.
-                                <img src="images/check.png"/>
+                                <img className="map_point" src="images/check.png"/>
                                 Then pushing Menu Button--&gt;Delete Selected. Push the "Yes" or "No button
                                 to confirm or decline deleting the selected GPXs.
                             </li>
@@ -1076,7 +1174,12 @@ class Manual extends React.Component {
                             {manualState.getItems().map(this.makeItem)}
                         </select>
                     </div>
-
+                    <nav aria-label="Page">
+                        <ul className="pager">
+                            {this.getPreviousLink()}
+                            {this.getNextLink()}
+                        </ul>
+                    </nav>
                     <div className="jumbotron">
                         {manualState.getCurrentPage()}
                     </div>
