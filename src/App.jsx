@@ -654,8 +654,8 @@ class ManualState {
                                 <li><strong>Delete selected:</strong> Deletes all items that have a selection check
                                     mark. <img className="map_point" src="images/check.png"/></li>
                             </ul>
-                            <li>Individual waypoints can be viewed by long pressing on them and choosing <strong>"Go to
-                                mark and set shown".</strong>
+                            <li>Individual waypoints can be viewed by long pressing on them and choosing <strong>Go to
+                                mark and set shown.</strong>
                             </li>
                             <div className="row standard_margin_top_bottom">
                                 <div className="col-xs-6 col-md-4">
@@ -746,7 +746,16 @@ class ManualState {
                                 <li><strong>Delete selected:</strong> Deletes all items that have a selection check
                                     mark. <img className="map_point" src="images/check.png"/></li>
                             </ul>
-
+                            <li>Individual routes can be viewed by long pressing on them and choosing <strong>Go to
+                                mark and set shown.</strong>
+                            </li>
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_rte_lp_ad-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
                             <h3>GPX Backups Tab</h3>
                             <div className="row standard_margin_top_bottom">
                                 <div className="col-xs-6 col-md-4">
@@ -765,38 +774,44 @@ class ManualState {
                                     </LazyLoad>
                                 </div>
                             </div>
+                            <li>Pushing the Menu Button <img className="btn_img" src="images/mainmenu.png"/> allows you
+                                to:
+                            </li>
+                            <ul>
+                                <li><strong>Toggle selected:</strong> toggles all items current selection state
+                                    &nbsp;<img className="map_point" src="images/check.png"/></li>
+                                <li><strong>Clear selected:</strong> clears all the selection checkboxes</li>
+                                <li><strong>Create new GPX/Backup:</strong> backs up all waypoints, tracks and routes to
+                                    a GPX file. <img className="map_point" src="images/check.png"/>
+                                </li>
+                                <div className="note">Note: Currently hidden items will be indicated by
+                                    &nbsp;<img className="map_point" src="images/hidden.png"/></div>
+                                <li><strong>Delete selected:</strong> Deletes all items that have a selection check
+                                    mark. <img className="map_point" src="images/check.png"/></li>
+                            </ul>
                             <li>All waypoints and tracks can be backed up to a GPX file by pushing Menu
                                 Button--&gt;Create new GPX/Backup.
                             </li>
-                            <li>GPXs can be deleted by tapping on the GPX(s) you would like to delete so
-                                that a green check mark is next to them.
-                                <img className="map_point" src="images/check.png"/>
-                                Then pushing Menu Button--&gt;Delete Selected. Push the "Yes" or "No button
-                                to confirm or decline deleting the selected GPXs.
+                            <li>Individual GPX Backups can be imported by long pressing on the desired GPX item and
+                                choosing <strong>Import</strong>.
                             </li>
-                            <li>Individual GPX Backups can be imported by long pressing on the desired GPX
-                                icon until an action dialog is presented. Choose "Import" and a second
-                                confirmation dialog will be presented showing the number of waypoints and
-                                tracks in the GPX file. Confirm or decline import by pushing "Yes" or "No".
-                                A progress dialog will be shown as the GPX is imported. NOTE: Duplicate
-                                waypoints and tracks will be skipped. After the import finishes a results
-                                dialog will indicate how many items were imported and how many were skipped
-                                because they already existed or were duplicates.
+                            <li>Individual GPX Backups can be sent (via Email or Bluetooth for example)
+                                by long pressing on the desired GPX item and choosing <strong>Send</strong>.
                             </li>
-                            <li>Individual GPX Backup files can be sent (via Email or Bluetooth for example)
-                                by long pressing on the desired GPX icon until an action dialog is
-                                presented. Choose "Send" and a menu will be presented with various "Send"
-                                options.
+                            <li>Individual GPX Backups can be renamed by long pressing on the desired GPX item and
+                                choosing <strong>Rename</strong>.
                             </li>
-                            <li>To bring GPX files in from external programs simply open the file from an
-                                external app (email client, file browser, etc) and choose MX Mariner in the
-                                presented menu to open the gpx file with. This will bring you straight to
-                                the "Marks Manager" with the new gpx file in the menu.**
+                            <li>Individual GPX Backups can be restored by long pressing on the desired GPX item and
+                                choosing <strong>Import</strong>. This will import all waypoints, tracks and routes in
+                                the GPX file.
                             </li>
-                            <li>If your device does not recognize the gpx file type (MX Mariner is not
-                                listed), you can manually copy your gpx file to the &lt;storage&gt;
-                                /mxmariner/gpx directory.
-                            </li>
+                            <div className="row standard_margin_top_bottom">
+                                <div className="col-xs-6 col-md-4">
+                                    <LazyLoad height={"100%"}>
+                                        <img className="img-responsive" src="images/mm_gpx_lp_ad-nq8.png"/>
+                                    </LazyLoad>
+                                </div>
+                            </div>
                         </li>
                     </div>
                 );
