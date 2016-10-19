@@ -7,7 +7,6 @@ import LazyLoad from 'react-lazyload';
 
 class ManualState {
     constructor() {
-        this.currentItem = 0;
         this.listItems = [
             "General Information",
             "Installing Chart Regions",
@@ -34,15 +33,15 @@ class ManualState {
         return this.listItems;
     }
 
-    getCurrentItem() {
-        return this.currentItem;
-    }
+    // getCurrentItem() {
+    //     return this.currentItem;
+    // }
 
-    setCurrentItem(value) {
-        if (value != null) {
-            this.currentItem = parseInt(value);
-        }
-    }
+    // setCurrentItem(value) {
+    //     if (value != null) {
+    //         this.currentItem = parseInt(value);
+    //     }
+    // }
 
     getMenuButtonCopy() {
         return (
@@ -61,12 +60,12 @@ class ManualState {
         );
     }
 
-    getCurrentPage() {
-        switch (this.currentItem) {
+    getCurrentPage(currentItem) {
+        switch (currentItem) {
             case 0: // General Information
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <h5>MX Mariner is a basic chart plotting program for Android.</h5>
                         <div className="row standard_margin_top_bottom">
                             <ul>
@@ -95,7 +94,7 @@ class ManualState {
             case 1: // Installing Chart Regions
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <ul>
                             <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
                             {this.getMenuButtonCopy()}
@@ -137,7 +136,7 @@ class ManualState {
             case 2: // Uninstalling Chart Regions
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
                         {this.getMenuButtonCopy()}
                         <li>Long press on an installed or partially downloaded region and choose "OK" to delete it.</li>
@@ -154,7 +153,7 @@ class ManualState {
             case 3: // Updating Chart Regions
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
                         {this.getMenuButtonCopy()}
                         <li>When an updated region file is available for an an installed region, the region will be
@@ -180,7 +179,7 @@ class ManualState {
             case 4: // Configuring Storage
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Menu Button--&gt; Settings --&gt; Storage</li>
                         {this.getMenuButtonCopy()}
                         <li>This will configure which storage device (e.g. an external SD Card) MX Mariner stores data
@@ -194,7 +193,7 @@ class ManualState {
             case 5: // Map Display Type
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>The chart/map display settings can be quickly changed by pressing Menu Button and the map
                             type (Raster Charts, Road map, Satellite) can be quickly changed using the map yype drop
                             down.
@@ -212,7 +211,7 @@ class ManualState {
             case 6: // Sensor Options - Ship & Map Presentation
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Menu Button--&gt; Settings --&gt; Sensors</li>
                         {this.getMenuButtonCopy()}
                         <li>GPS Course Predictor - When checked a red predictor line extends out from ship on chart in
@@ -245,7 +244,7 @@ class ManualState {
             case 7:    // Cart Panning, Zooming, Measuring
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Zoom chart by using zoom buttons
                             <img className="btn_img" src="images/zoomin.png"/>
                             &nbsp;
@@ -266,7 +265,7 @@ class ManualState {
             case 8:    // GPS follow
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <ul>
                             <li>Enable location on your device Settings --&gt; Location &amp; Security --&gt; Use GPS
                                 satellites (checked)
@@ -309,7 +308,7 @@ class ManualState {
             case 9:    // Measure Tool
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the
                             extra tool buttons.
                         </li>
@@ -335,7 +334,7 @@ class ManualState {
             case 10:    // Units of measure
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Units</li>
                         {this.getMenuButtonCopy()}
                         <div className="row standard_margin_top_bottom">
@@ -386,7 +385,7 @@ class ManualState {
             case 11:    // Adding Waypoints
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the
                             extra tool buttons.
                         </li>
@@ -413,7 +412,7 @@ class ManualState {
             case 12:    // Working with Waypoints
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Tap on the waypoint icon on the map and an action dialog will be
                             presented.
                         </li>
@@ -457,7 +456,7 @@ class ManualState {
             case 13:    // Recording A Track
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <div className="note">Note: GPS must have a position lock for Track recording to start</div>
                         <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the
                             extra tool buttons.
@@ -477,7 +476,7 @@ class ManualState {
             case 14:    // Working with Tracks
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Tap on the track icon <img className="map_point" src="images/trackstart.png"/> on the map
                             and an action dialog will be
                             presented.
@@ -504,7 +503,7 @@ class ManualState {
             case 15:    // Adding Routes
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Push the extra tools button <img className="btn_img" src="images/tools.png"/> to show the
                             extra tool buttons.
                         </li>
@@ -525,7 +524,7 @@ class ManualState {
             case 16:    // Working with Routes
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <ul>
                             <li>Tap on the route <img className="map_point" src="images/routestart.png"/> icon on the
                                 map and an action dialog will be presented.
@@ -583,7 +582,7 @@ class ManualState {
             case 17:    // Route Edit Points Mode
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <div className="note">Note: see <Link to={"/manual/16"} href="">Working with Routes</Link> to
                             learn how to put a route into and out of edit point mode.
                         </div>
@@ -619,7 +618,7 @@ class ManualState {
             case 18:    // Marks Manager
                 return (
                     <div className="container">
-                        <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <h3><strong>{this.listItems[currentItem]}</strong></h3>
                         <li>Use the Marks Manager to manage marks: Waypoints, Tracks and GPX Backups</li>
                         <li>Menu Button --&gt; Settings --&gt; Marks Manager gets you to the Marks Manager
                             {this.getMenuButtonCopy()}
@@ -1113,15 +1112,14 @@ class Review extends React.Component {
 class Manual extends React.Component {
     constructor(props) {
         super(props);
-        if (this.props.params) {
-            manualState.setCurrentItem(this.props.params.sectionId);
-        }
     }
 
     componentDidMount() {
+        console.log("componentDidMount()")
     }
 
     componentWillUnmount() {
+        console.log("componentWillUnmount()")
     }
 
     makeItem(name, index) {
@@ -1136,20 +1134,26 @@ class Manual extends React.Component {
     };
 
     handleClick(index) {
-        manualState.setCurrentItem(index);
-        hashHistory.push("/manual/" + manualState.getCurrentItem());
+        hashHistory.push("/manual/" + index);
+    }
+
+    getCurrentItem() {
+        if (this.props.params && this.props.params.sectionId != null) {
+            return parseInt(this.props.params.sectionId);
+        }
+        return 0;
     }
 
     handleClickNext() {
-        this.handleClick(manualState.getCurrentItem() + 1)
+        this.handleClick(this.getCurrentItem() + 1)
     }
 
     handleClickPrevious() {
-        this.handleClick(manualState.getCurrentItem() - 1)
+        this.handleClick(this.getCurrentItem() - 1)
     }
 
     getPreviousLink() {
-        if (manualState.getCurrentItem() == 0) {
+        if (this.getCurrentItem() == 0) {
             return (
                 <li className="previous disabled"><a><span aria-hidden="true">&larr;</span> Previous</a></li>
             )
@@ -1162,7 +1166,7 @@ class Manual extends React.Component {
     }
 
     getNextLink() {
-        if (manualState.getCurrentItem() < (manualState.getItems().length - 1)) {
+        if (this.getCurrentItem() < (manualState.getItems().length - 1)) {
             return (
                 <li className="next"><a onClick={this.handleClickNext.bind(this)}>Next <span
                     aria-hidden="true">&rarr;</span></a></li>
@@ -1183,7 +1187,7 @@ class Manual extends React.Component {
                 <div className="container standard_margin">
                     <div className="form-group">
                         <label>Section:</label>
-                        <select className="form-control" value={manualState.getCurrentItem()}
+                        <select className="form-control" value={this.getCurrentItem()}
                                 onChange={this.handleChange.bind(this)}>
                             {manualState.getItems().map(this.makeItem)}
                         </select>
@@ -1195,7 +1199,7 @@ class Manual extends React.Component {
                         </ul>
                     </nav>
                     <div className="jumbotron">
-                        {manualState.getCurrentPage()}
+                        {manualState.getCurrentPage(this.getCurrentItem())}
                     </div>
                     <nav aria-label="Page">
                         <ul className="pager">
