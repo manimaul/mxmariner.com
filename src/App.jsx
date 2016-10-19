@@ -14,7 +14,7 @@ class ManualState {
             "Uninstalling Chart Regions",
             "Updating Chart Regions",
             "Configuring Storage",
-            "Display Settings and Features:",
+            "Map Display Type:",
             "Sensor Options - Ship & Map Presentation",
             "Cart Panning, Zooming, Measuring",
             "GPS follow",
@@ -161,17 +161,29 @@ class ManualState {
                             labeled with an &quot;update available&quot; tag in yellow.
                         </li>
                         <li>Tap on the region in the menu to download the update.</li>
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/chart_list-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/chart_download-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                     </div>
                 );
             case 4: // Configuring Storage
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>Menu Button--&gt; Settings --&gt; Storage
-                            <br /> **The Menu Button is the 3 horizontal lines on the top, left part of the screen when
-                            viewing the map / chart.
-                        </li>
-                        <li>This will configure which storage device (ex internal or external) MX Mariner stores data
+                        <li>Menu Button--&gt; Settings --&gt; Storage</li>
+                        {this.getMenuButtonCopy()}
+                        <li>This will configure which storage device (e.g. an external SD Card) MX Mariner stores data
                             to.
                         </li>
                         <li>Selecting a different storage device here will also move existing MX Mariner chart and GPX
@@ -179,35 +191,34 @@ class ManualState {
                         </li>
                     </div>
                 );
-            case 5: // Display Settings and Features
+            case 5: // Map Display Type
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
-                        <li>The chart/map display settings can be quickly changed by pressing Menu Button --&gt;
-                            Display
-                        </li>
-                        {this.getMenuButtonCopy()}
-                        <div className="row standard_margin_bottom">
-                            <div className="col-xs-3 col-md-2">
+                        <li>The chart/map display settings can be quickly changed by pressing Menu Button and the map
+                            type (Raster Charts, Road map, Satellite) can be quickly changed using the map yype drop
+                            down.</li>
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
                                 <LazyLoad height={"100%"}>
-                                    <img className="img-responsive" src="images/menu_clip-nq8.png"/>
+                                    <img className="img-responsive" src="images/drawer_map_type-nq8.png"/>
                                 </LazyLoad>
                             </div>
                         </div>
-                        <li>The Map Type (Raster Charts, Road map, Satellite) can be quickly changed using the Map Type
-                            drop down.
-                        </li>
+                        {this.getMenuButtonCopy()}
                     </div>
                 );
             case 6: // Sensor Options - Ship & Map Presentation
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[this.currentItem]}</strong></h3>
+                        <li>Menu Button--&gt; Settings --&gt; Sensors</li>
+                        {this.getMenuButtonCopy()}
                         <li>GPS Course Predictor - When checked a red predictor line extends out from ship on chart in
-                            the direction of the curent course over ground. The line length is relative to speed over
+                            the direction of the current course over ground. The line length is relative to speed over
                             ground.
                         </li>
-                        <li>Compass Heading Predictor - When checked an orange predicor line extends out from ship on
+                        <li>Compass Heading Predictor - When checked an orange predictor line extends out from ship on
                             the chart relative to your current azimuth.
                         </li>
                         <li>Orientation Mode - This setting gives you two options, course or heading. The selected
@@ -221,6 +232,13 @@ class ManualState {
                         <li>Bluetooth GPS - Check this if you are using a bluetooth gps or other "mock location"
                             provider.
                         </li>
+                        <div className="row standard_margin_top_bottom">
+                            <div className="col-xs-6 col-md-4">
+                                <LazyLoad height={"100%"}>
+                                    <img className="img-responsive" src="images/sensors-nq8.png"/>
+                                </LazyLoad>
+                            </div>
+                        </div>
                     </div>
                 );
             case 7:    // Cart Panning, Zooming, Measuring
