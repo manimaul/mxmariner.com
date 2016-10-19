@@ -938,7 +938,6 @@ class Menu extends React.Component {
                         <div id="navbar" className="collapse navbar-collapse">
                             <ul className="nav navbar-nav">
                                 <li><Link to={"/manual"} href="">MANUAL</Link></li>
-                                <li><Link to={"/charts"} href="">CHARTS</Link></li>
                                 <li><a href="https://play.google.com/store/apps/details?id=mx.mariner">DOWNLOAD</a></li>
                             </ul>
                         </div>
