@@ -15,7 +15,7 @@ class ManualState {
             "Configuring Storage",
             "Map Display Type:",
             "Sensor Options - Ship & Map Presentation",
-            "Cart Panning, Zooming, Measuring",
+            "Chart Panning, Zooming, Measuring",
             "GPS follow",
             "Measure Tool",
             "Units of measure",
@@ -241,7 +241,7 @@ class ManualState {
                         </div>
                     </div>
                 );
-            case 7:    // Cart Panning, Zooming, Measuring
+            case 7:    // Chart Panning, Zooming, Measuring
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[currentItem]}</strong></h3>
