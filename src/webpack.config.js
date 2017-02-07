@@ -1,16 +1,17 @@
-var webpack = require('webpack');
 var PROD = JSON.parse(process.env.PROD_ENV || '0');
+const webpack = require('webpack'); //to access built-in plugins
+const path = require('path');
 
-module.exports = {
+const config = {
     entry: {
         app: './App.jsx'
     },
     output: {
-        path: '../site/gen',
-        filename: "[name].bundle.js"
+        path: path.resolve(__dirname, '../site/gen'),
+        filename: '[name].bundle.js'
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.css$/,
                 loader: "style-loader!css-loader"
@@ -18,7 +19,7 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'babel', // 'babel-loader' is also a legal name to reference
+                loader: 'babel-loader', // 'babel-loader' is also a legal name to reference
                 query: {
                     presets: ['react', 'es2015']
                 }
@@ -55,7 +56,9 @@ module.exports = {
     //    //but get it from a global 'React' variable
     //    'react': 'React'
     //},
-    resolve: {
-        extensions: ['', '.js', '.jsx']
-    }
+    // resolve: {
+    //     extensions: ['', '.js', '.jsx']
+    // }
 };
+
+module.exports = config;

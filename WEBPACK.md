@@ -1,36 +1,19 @@
+####initial setup
 ```bash
-cd src/main/js
-npm init
+sh init.sh
 ```
 
-#### Webpack
+####gen css
 ```bash
-npm install webpack -g
-npm install style-loader css-loader
-```
-
-#### RxJs
-```bash
-npm install --save rx-lite
-```
-
-#### React and React Router
-```bash
-npm install --save react react-dom react-router
-npm install --save babel-loader babel-core babel-preset-es2015 babel-preset-react
-```
-
-#### Lazy Load
-```bash
-npm install --save react-lazyload
+sass style.scss ../site/gen/style.css
 ```
 
 ####debug build
 ```bash
-PROD_ENV=0 webpack
+PROD_ENV=0 node_modules/.bin/webpack
 ```
 
 ####release build
 ```bash
-PROD_ENV=1 webpack
+PROD_ENV=1 node_modules/.bin/webpack
 ```
