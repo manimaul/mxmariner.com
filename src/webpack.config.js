@@ -1,5 +1,5 @@
 var PROD = JSON.parse(process.env.PROD_ENV || '0');
-const webpack = require('webpack'); //to access built-in plugins
+const webpack = require('webpack'); // to access built-in plugins
 const path = require('path');
 
 const config = {
@@ -7,7 +7,7 @@ const config = {
         app: './App.jsx'
     },
     output: {
-        path: path.resolve(__dirname, '../site/gen'),
+        path: path.resolve(__dirname, '../site/'),
         filename: '[name].bundle.js'
     },
     module: {
@@ -51,14 +51,14 @@ const config = {
             NODE_ENV: JSON.stringify("production")
         }
     })] : [],
-    //externals: {
-    //    //don't bundle the 'react' npm package with our bundle.js
-    //    //but get it from a global 'React' variable
-    //    'react': 'React'
-    //},
-    // resolve: {
-    //     extensions: ['', '.js', '.jsx']
-    // }
+    devServer: {
+        contentBase: path.join(__dirname, "../site/"),
+        filename: 'app.bundle.js',
+        compress: true,
+        port: 9000
+    }
 };
+
+
 
 module.exports = config;

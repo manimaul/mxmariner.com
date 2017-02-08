@@ -5,7 +5,12 @@ sh init.sh
 
 ####gen css
 ```bash
-sass style.scss ../site/gen/style.css
+sass style.scss ../site/style.css
+```
+
+####run dev server
+```bash
+node_modules/.bin/webpack-dev-server --open
 ```
 
 ####debug build

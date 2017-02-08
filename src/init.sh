@@ -4,6 +4,7 @@ mkdir -p main/js
 mkdir ../site/gen
 npm init
 npm install --save-dev webpack
+npm install webpack-dev-server --save-dev
 npm install --save-dev style-loader css-loader
 npm install --save-dev rx-lite
 npm install --save-dev react react-dom react-router

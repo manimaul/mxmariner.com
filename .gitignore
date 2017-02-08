@@ -1,3 +1,5 @@
 src/node_modules
-site/gen
+site/*.bundle.js
+site/*.css
+site/style.css.map
 src/.sass-cache
