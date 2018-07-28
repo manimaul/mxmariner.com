@@ -1,8 +1,8 @@
-#[MXMariner.com](https://mxmariner.com/)
+# [MXMariner.com](https://mxmariner.com/)
 
 Source for https://mxmariner.com/ Static (SPA) Single Page Web App
 
-####Stack
+#### Stack
 
 * GUI [ReactJs](https://facebook.github.io/react/)
 * Events [RXJs](http://reactivex.io/rxjs/)
@@ -15,4 +15,15 @@ cd mxmariner.com
 yarn add rx-lite 
 yarn add react-router
 yarn add react-router-dom
+```
+
+#### Local Dev
+```
+yarn start 
+```
+
+### Build Release
+
+```
+yarn build 
 ```
