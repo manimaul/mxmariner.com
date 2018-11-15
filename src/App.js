@@ -16,16 +16,6 @@ import {Link} from 'react-router-dom'
 
 
 export class Footer extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
-    }
-
     render() {
         return (
             <div className="mad_footer">
@@ -46,7 +36,7 @@ export class Hero extends React.Component {
         this.titleImage = props.titleImage;
         this.subTitle = props.subTitle;
         this.message = props.message;
-        this.reverseAccent = props.reverseAccent == true;
+        this.reverseAccent = props.reverseAccent === true;
     }
 
     componentDidMount() {
@@ -91,7 +81,7 @@ export class Hero extends React.Component {
         return (
             <div className="section-hero">
                 <div className="dark_layer">
-                    <div className="container hero-heading">
+                    <div className="container Fhero-heading">
                         {this.getTitle()}
                         {this.getTitleImage()}
                         {this.getSubTitle()}
@@ -123,9 +113,9 @@ export class Menu extends React.Component {
                             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse"
                                     data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                                 <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
+                                <span className="icon-bar"/>
+                                <span className="icon-bar"/>
+                                <span className="icon-bar"/>
                             </button>
                             <a className="navbar-brand" href="/">MX MARINER</a>
                         </div>
@@ -149,7 +139,7 @@ class Section extends React.Component {
         this.message = props.message;
         this.imgUrl1 = props.imgUrl1;
         this.imgUrl2 = props.imgUrl2;
-        this.isDark = props.isDark == true;
+        this.isDark = props.isDark === true;
     }
 
     componentDidMount() {
@@ -158,10 +148,10 @@ class Section extends React.Component {
     componentWillUnmount() {
     }
 
-    image(imageUrl) {
+    static image(imageUrl) {
         if (imageUrl) {
             return (
-                <img className="img-responsive" src={imageUrl}/>
+                <img className="img-responsive" src={imageUrl}F/>
             )
         }
     }
@@ -178,10 +168,10 @@ class Section extends React.Component {
                             <p>{this.message}</p>
                         </div>
                         <div className="col-xs-6 col-md-4">
-                            {this.image(this.imgUrl1)}
+                            {Section.image(this.imgUrl1)}
                         </div>
                         <div className="col-xs-6 col-md-4">
-                            {this.image(this.imgUrl2)}
+                            {Section.image(this.imgUrl2)}
                         </div>
                     </div>
                 </div>
@@ -191,16 +181,6 @@ class Section extends React.Component {
 }
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
-    }
-
     render() {
         return (
             <div>

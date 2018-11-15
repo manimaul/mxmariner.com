@@ -39,7 +39,6 @@ import mainmenu from './images/mainmenu.png';
 import units_brng_course_nq8 from './images/units_brng_course_nq8.png';
 import trackoff from './images/trackoff.png';
 import route_nq8 from './images/route_nq8.png';
-import placeholder from './images/placeholder.jpg';
 import hidden from './images/hidden.png';
 import zoomin from './images/zoomin.png';
 import mm_rte_action_dialog_nq8 from './images/mm_rte_action_dialog_nq8.png';
@@ -90,7 +89,7 @@ class ManualState {
         return this.listItems;
     }
 
-    getMenuButtonCopy() {
+    static getMenuButtonCopy() {
         return (
             <div>
                 <div className="note">Note: The Menu Button is the 3 horizontal lines on the top, left part
@@ -141,7 +140,7 @@ class ManualState {
                         <h3><strong>{this.listItems[index]}</strong></h3>
                         <ul>
                             <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
-                            {this.getMenuButtonCopy()}
+                            {ManualState.getMenuButtonCopy()}
                             <div className="row standard_margin_top_bottom">
                                 <div className="col-xs-6 col-md-4">
                                     <img className="img-responsive" src={chart_list_nq8}/>
@@ -178,7 +177,7 @@ class ManualState {
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
-                        {this.getMenuButtonCopy()}
+                        {ManualState.getMenuButtonCopy()}
                         <li>Long press on an installed or partially downloaded region and choose "OK" to delete it.</li>
                         <li>Deleted regions are completely removed from the device.</li>
                         <div className="row standard_margin_top_bottom">
@@ -193,7 +192,7 @@ class ManualState {
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Install Charts</li>
-                        {this.getMenuButtonCopy()}
+                        {ManualState.getMenuButtonCopy()}
                         <li>When an updated region file is available for an an installed region, the region will be
                             labeled with an &quot;update available&quot; tag in yellow.
                         </li>
@@ -215,7 +214,7 @@ class ManualState {
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
                         <li>Menu Button--&gt; Settings --&gt; Storage</li>
-                        {this.getMenuButtonCopy()}
+                        {ManualState.getMenuButtonCopy()}
                         <li>This will configure which storage device (e.g. an external SD Card) MX Mariner stores data
                             to.
                         </li>
@@ -237,7 +236,7 @@ class ManualState {
                                 <img className="img-responsive" src={drawer_map_type_nq8}/>
                             </div>
                         </div>
-                        {this.getMenuButtonCopy()}
+                        {ManualState.getMenuButtonCopy()}
                     </div>
                 );
             case 7: // Sensor Options - Ship & Map Presentation
@@ -245,7 +244,7 @@ class ManualState {
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
                         <li>Menu Button--&gt; Settings --&gt; Sensors</li>
-                        {this.getMenuButtonCopy()}
+                        {ManualState.getMenuButtonCopy()}
                         <li>GPS Course Predictor - When checked a red predictor line extends out from ship on chart in
                             the direction of the current course over ground. The line length is relative to speed over
                             ground.
@@ -289,7 +288,7 @@ class ManualState {
                         <li>Zoom buttons can be turned on/off in: Menu Button --&gt; Settings --&gt; View --&gt; Zoom
                             Buttons
                         </li>
-                        {this.getMenuButtonCopy()}
+                        {ManualState.getMenuButtonCopy()}
                     </div>
                 );
             case 9:    // GPS follow
@@ -364,7 +363,7 @@ class ManualState {
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
                         <li>Menu Button --&gt; Settings --&gt; Units</li>
-                        {this.getMenuButtonCopy()}
+                        {ManualState.getMenuButtonCopy()}
                         <div className="row standard_margin_top_bottom">
                             <div className="col-xs-6 col-md-4">
                                 <img className="img-responsive" src={units_nq8}/>
@@ -623,7 +622,7 @@ class ManualState {
                         <h3><strong>{this.listItems[index]}</strong></h3>
                         <li>Use the Marks Manager to manage marks: Waypoints, Tracks and GPX Backups</li>
                         <li>Menu Button --&gt; Settings --&gt; Marks Manager gets you to the Marks Manager
-                            {this.getMenuButtonCopy()}
+                            {ManualState.getMenuButtonCopy()}
                             <h3>Waypoints Tab</h3>
                             <div className="row standard_margin_top_bottom">
                                 <div className="col-xs-6 col-md-4">
@@ -793,16 +792,6 @@ class ManualState {
 
 var manualState = new ManualState();
 
-class Placeholder extends React.Component {
-    render() {
-        return (
-            <div>
-                <img className="img-responsive" src={placeholder}/>
-            </div>
-        );
-    }
-}
-
 class Manual extends React.Component {
     constructor(props) {
         super(props);
@@ -816,7 +805,7 @@ class Manual extends React.Component {
         console.log("componentWillUnmount()")
     }
 
-    makeItem(name, index) {
+    static makeItem(name, index) {
         var label = "(" + (index + 1) + ") " + name;
         return (
             <option key={index} value={index} label={label}>{name}</option>
@@ -853,7 +842,7 @@ class Manual extends React.Component {
     }
 
     getPreviousLink() {
-        if (this.getCurrentItemPage() == 1) {
+        if (this.getCurrentItemPage() === 1) {
             return (
                 <li className="previous disabled"><a><span aria-hidden="true">&larr;</span> Previous</a></li>
             )
@@ -889,7 +878,7 @@ class Manual extends React.Component {
                         <label>Section:</label>
                         <select className="form-control" value={this.getCurrentItemIndex()}
                                 onChange={this.handleChange.bind(this)}>
-                            {manualState.getItems().map(this.makeItem)}
+                            {manualState.getItems().map(Manual.makeItem)}
                         </select>
                     </div>
                     <nav aria-label="Page">
