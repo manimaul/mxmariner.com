@@ -9,7 +9,7 @@ import track_nq8 from './images/track_nq8.png'
 import track_detail_nq8 from './images/track_detail_nq8.png'
 import route_nq8 from './images/route_nq8.png'
 import route_options_nq8 from './images/route_options_nq8.png'
-import './App.css';
+import {sectionHeroStyle, madFooterStyle, vertPaddingStyle} from './style.js';
 
 import React from 'react';
 import {Link} from 'react-router-dom'
@@ -18,8 +18,8 @@ import {Link} from 'react-router-dom'
 export class Footer extends React.Component {
     render() {
         return (
-            <div className="mad_footer">
-                <div className="dark_layer">
+            <div style={madFooterStyle}>
+                <div style={vertPaddingStyle} className="dark_layer">
                     <div className="container">
                         <p>© {new Date().getFullYear()} MX Mariner</p>
                     </div>
@@ -37,12 +37,6 @@ export class Hero extends React.Component {
         this.subTitle = props.subTitle;
         this.message = props.message;
         this.reverseAccent = props.reverseAccent === true;
-    }
-
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
     }
 
     getTitle() {
@@ -79,9 +73,9 @@ export class Hero extends React.Component {
 
     render() {
         return (
-            <div className="section-hero">
+            <div style={sectionHeroStyle}>
                 <div className="dark_layer">
-                    <div className="container Fhero-heading">
+                    <div className="container hero-heading">
                         {this.getTitle()}
                         {this.getTitleImage()}
                         {this.getSubTitle()}
@@ -94,16 +88,6 @@ export class Hero extends React.Component {
 }
 
 export class Menu extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
-    }
-
     render() {
         return (
             <div>
@@ -142,16 +126,10 @@ class Section extends React.Component {
         this.isDark = props.isDark === true;
     }
 
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
-    }
-
     static image(imageUrl) {
         if (imageUrl) {
             return (
-                <img className="img-responsive" src={imageUrl}F/>
+                <img className="img-responsive" src={imageUrl}/>
             )
         }
     }
@@ -258,12 +236,6 @@ class Review extends React.Component {
         this.reviewDate = props.reviewDate;
         this.reviewName = props.reviewName;
         this.reviewContent = props.reviewContent;
-    }
-
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
     }
 
     render() {
