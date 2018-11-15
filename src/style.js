@@ -9,7 +9,6 @@ export const sectionHeroStyle = {
 };
 
 export const madFooterStyle = {
-    marginTop: '16px;',
     background: 'url(' + bg_bottom + ')',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -17,6 +16,6 @@ export const madFooterStyle = {
 };
 
 export const vertPaddingStyle = {
-    paddingTop: '16pt',
+    paddingTop: '20pt',
     paddingBottom: '16pt'
 };
