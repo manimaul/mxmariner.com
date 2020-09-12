@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mxmariner
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: mxmariner-web-scaler
+spec:
+  scaleTargetRef:
+    kind: ReplicaSet
+    name: mxmariner-web-dep
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 50
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mxmariner-web-svc
+  namespace: mxmariner
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: mxmariner-web-svc
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mxmariner-web-deb
+  namespace: mxmariner
+spec:
+  selector:
+    matchLabels:
+      app: mxmariner-web-svc
+  template:
+    metadata:
+      labels:
+        app: mxmariner-web-svc
+    spec:
+      containers:
+        - image: manimaul/mxmariner.com:latest
+          name: mxmariner-web-svc
+          ports:
+            - containerPort: 80
+              name: http
+          resources:
+            requests:
+              cpu: 100m
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: l5d-header-middleware
+  namespace: mxmariner
+spec:
+  headers:
+    customRequestHeaders:
+      l5d-dst-override: "mxmariner-web-svc.mxmariner.svc.cluster.local:80"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  creationTimestamp: null
+  name: mxmariner-web-ingress-route
+  namespace: mxmariner
+spec:
+  entryPoints: []
+  routes:
+    - kind: Rule
+      match: Host(`mxmariner.com`) || Host(`wkcluster`)
+      priority: 0
+      middlewares:
+        - name: l5d-header-middleware
+      services:
+        - kind: Service
+          name: mxmariner-web-svc
+          port: 80
