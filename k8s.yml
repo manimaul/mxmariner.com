@@ -75,7 +75,7 @@ spec:
   entryPoints: []
   routes:
     - kind: Rule
-      match: Host(`mxmariner.com`) || Host(`wkcluster`)
+      match: Host(`www.mxmariner.com`) || Host(`mxmariner.com`)
       priority: 0
       middlewares:
         - name: l5d-header-middleware
