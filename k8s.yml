@@ -24,7 +24,7 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 80
+      targetPort: 8088
   selector:
     app: mxmariner-web-svc
   type: ClusterIP
@@ -44,10 +44,10 @@ spec:
         app: mxmariner-web-svc
     spec:
       containers:
-        - image: manimaul/mxmariner.com:latest
+        - image: manimaul/mxmariner.com:09-12-20_r0
           name: mxmariner-web-svc
           ports:
-            - containerPort: 80
+            - containerPort: 8088
               name: http
           resources:
             requests:
