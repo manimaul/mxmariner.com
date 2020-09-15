@@ -53,33 +53,38 @@ spec:
             requests:
               cpu: 100m
 ---
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: l5d-header-middleware
-  namespace: mxmariner
-spec:
-  headers:
-    customRequestHeaders:
-      l5d-dst-override: "mxmariner-web-svc.mxmariner.svc.cluster.local:80"
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: traefik
-  creationTimestamp: null
-  name: mxmariner-web-ingress-route
+    kubernetes.io/ingress.class: traefik-cert-manager
+    ingress.kubernetes.io/custom-request-headers: l5d-dst-override:mxmariner-web-svc.mxmariner.svc.cluster.local:80
+  name: mxmarineringress
   namespace: mxmariner
 spec:
-  entryPoints: []
-  routes:
-    - kind: Rule
-      match: Host(`www.mxmariner.com`) || Host(`mxmariner.com`)
-      priority: 0
-      middlewares:
-        - name: l5d-header-middleware
-      services:
-        - kind: Service
-          name: mxmariner-web-svc
-          port: 80
+  rules:
+    - host: mxmariner.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mxmariner-web-svc
+              servicePort: 80
+  tls:
+    - hosts:
+        - mxmariner
+      secretName: mxmariner-cert
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: mxmariner-cert
+  namespace: mxmariner
+spec:
+  commonName: mxmariner.com
+  secretName: mxmariner-cert
+  dnsNames:
+    - mxmariner.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
