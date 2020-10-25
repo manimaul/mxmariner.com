@@ -59,6 +59,8 @@ metadata:
   annotations:
     haproxy.org/request-set-header: "l5d-dst-override mxmariner-web-svc.mxmariner.svc.cluster.local:8443"
     haproxy.org/server-ssl: "true"
+    haproxy.org/ssl-redirect: "true" # https://www.haproxy.com/documentation/kubernetes/latest/configuration/ingress/
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
   name: mxmarineringress
   namespace: mxmariner
 spec:
@@ -77,23 +79,32 @@ spec:
             backend:
               serviceName: mxmariner-web-svc
               servicePort: 8443
+    - host: willkamp.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mxmariner-web-svc
+              servicePort: 8443
   tls:
     - hosts:
         - mxmariner.com
         - www.mxmariner.com
+        - willkamp.com
       secretName: mxmariner-cert
 ---
-apiVersion: cert-manager.io/v1alpha2
-kind: Certificate
-metadata:
-  name: mxmariner-cert
-  namespace: mxmariner
-spec:
-  commonName: mxmariner.com
-  secretName: mxmariner-cert
-  dnsNames:
-    - mxmariner.com
-    - www.mxmariner.com
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
+#apiVersion: cert-manager.io/v1alpha2
+#kind: Certificate
+#metadata:
+#  name: mxmariner-cert
+#  namespace: mxmariner
+#spec:
+#  commonName: mxmariner.com
+#  secretName: mxmariner-cert
+#  dnsNames:
+#    - mxmariner.com
+#    - www.mxmariner.com
+#    - ehm.mxmariner.com
+#  issuerRef:
+#    name: letsencrypt-prod
+#    kind: ClusterIssuer
