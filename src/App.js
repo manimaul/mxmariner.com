@@ -139,16 +139,16 @@ class Section extends React.Component {
             <div className={this.isDark ? "dark_dark_layer" : ""}>
                 <div className="container standard_margin">
                     <div className={"row" + (this.isDark ? " standard_margin_top_bottom" : "")}>
-                        <div className="col-xs-6 col-md-4">
+                        <div className="col-xs-8 col-sm-6 col-md-4">
                             <div className="page-header">
                                 <h1>{this.title}</h1>
                             </div>
                             <p>{this.message}</p>
                         </div>
-                        <div className="col-xs-6 col-md-4">
+                        <div className="col-xs-6 col-sm-6 col-md-4">
                             {Section.image(this.imgUrl1)}
                         </div>
-                        <div className="col-xs-6 col-md-4">
+                        <div className="col-xs-6 col-sm-6 col-md-4">
                             {Section.image(this.imgUrl2)}
                         </div>
                     </div>
