@@ -68,8 +68,7 @@ class ManualState {
             "Installing Chart Regions",
             "Uninstalling Chart Regions",
             "Updating Chart Regions",
-            "Configuring Storage",
-            "Map Display Type:",
+            "Map Display Type",
             "Sensor Options - Ship & Map Presentation",
             "Chart Panning, Zooming, Measuring",
             "GPS follow",
@@ -209,21 +208,7 @@ class ManualState {
                         </div>
                     </div>
                 );
-            case 5: // Configuring Storage
-                return (
-                    <div className="container">
-                        <h3><strong>{this.listItems[index]}</strong></h3>
-                        <li>Menu Button--&gt; Settings --&gt; Storage</li>
-                        {ManualState.getMenuButtonCopy()}
-                        <li>This will configure which storage device (e.g. an external SD Card) MX Mariner stores data
-                            to.
-                        </li>
-                        <li>Selecting a different storage device here will also move existing MX Mariner chart and GPX
-                            data to the new specified location.
-                        </li>
-                    </div>
-                );
-            case 6: // Map Display Type
+            case 5: // Map Display Type
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -239,7 +224,7 @@ class ManualState {
                         {ManualState.getMenuButtonCopy()}
                     </div>
                 );
-            case 7: // Sensor Options - Ship & Map Presentation
+            case 6: // Sensor Options - Ship & Map Presentation
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -270,7 +255,7 @@ class ManualState {
                         </div>
                     </div>
                 );
-            case 8:    // Chart Panning, Zooming, Measuring
+            case 7:    // Chart Panning, Zooming, Measuring
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -291,7 +276,7 @@ class ManualState {
                         {ManualState.getMenuButtonCopy()}
                     </div>
                 );
-            case 9:    // GPS follow
+            case 8:    // GPS follow
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -334,7 +319,7 @@ class ManualState {
                         </ul>
                     </div>
                 );
-            case 10:    // Measure Tool
+            case 9:    // Measure Tool
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -358,7 +343,7 @@ class ManualState {
                             <img className="btn_img" src={done}/></li>
                     </div>
                 );
-            case 11:    // Units of measure
+            case 10:    // Units of measure
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -399,7 +384,7 @@ class ManualState {
                         </div>
                     </div>
                 );
-            case 12:    // Adding Waypoints
+            case 11:    // Adding Waypoints
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -424,7 +409,7 @@ class ManualState {
                         <li>Push Save and the map will be centered on the new waypoint.</li>
                     </div>
                 );
-            case 13:    // Working with Waypoints
+            case 12:    // Working with Waypoints
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -464,7 +449,7 @@ class ManualState {
                         </li>
                     </div>
                 );
-            case 14:    // Recording A Track
+            case 13:    // Recording A Track
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -484,7 +469,7 @@ class ManualState {
                         </li>
                     </div>
                 );
-            case 15:    // Working with Tracks
+            case 14:    // Working with Tracks
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -509,7 +494,7 @@ class ManualState {
                         </li>
                     </div>
                 );
-            case 16:    // Adding Routes
+            case 15:    // Adding Routes
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -530,7 +515,7 @@ class ManualState {
                         </li>
                     </div>
                 );
-            case 17:    // Working with Routes
+            case 16:    // Working with Routes
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -584,7 +569,7 @@ class ManualState {
                         </ul>
                     </div>
                 );
-            case 18:    // Route Edit Points Mode
+            case 17:    // Route Edit Points Mode
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
@@ -616,7 +601,7 @@ class ManualState {
                         <li>Select <strong>Delete</strong> to delete the selected route point.</li>
                     </div>
                 );
-            case 19:    // Marks Manager
+            case 18:    // Marks Manager
                 return (
                     <div className="container">
                         <h3><strong>{this.listItems[index]}</strong></h3>
