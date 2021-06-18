@@ -44,7 +44,7 @@ spec:
         app: mxmariner-web-svc
     spec:
       containers:
-        - image: manimaul/mxmariner.com:09-24-20_r0
+        - image: docker.io/manimaul/mxmariner.com:05-29-21_r0
           name: mxmariner-web-svc
           ports:
             - containerPort: 8443
@@ -57,7 +57,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    haproxy.org/request-set-header: "l5d-dst-override mxmariner-web-svc.mxmariner.svc.cluster.local:8443"
+#    haproxy.org/request-set-header: "l5d-dst-override mxmariner-web-svc.mxmariner.svc.cluster.local:8443"
     haproxy.org/server-ssl: "true"
     haproxy.org/ssl-redirect: "true" # https://www.haproxy.com/documentation/kubernetes/latest/configuration/ingress/
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
