@@ -9,3 +9,8 @@
     margin: 3px;
     padding: 3px;
 }
+
+.sm_image {
+    width: 400px;
+    height: auto;
+}

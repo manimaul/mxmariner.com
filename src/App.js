@@ -106,7 +106,7 @@ export class Menu extends React.Component {
                         <div id="navbar" className="collapse navbar-collapse">
                             <ul className="nav navbar-nav">
                                 <li><Link to={"/manual"}>MANUAL</Link></li>
-                                <li><a href="https://play.google.com/store/apps/details?id=mx.mariner">DOWNLOAD</a></li>
+                                <li><Link to={"/news"}>NEWS</Link></li>
                             </ul>
                         </div>
                     </div>

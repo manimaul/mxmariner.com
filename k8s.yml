@@ -43,8 +43,11 @@ spec:
       labels:
         app: mxmariner-web-svc
     spec:
+      imagePullSecrets:
+        - name: ghreg
       containers:
-        - image: docker.io/manimaul/mxmariner.com:05-29-21_r0
+        - image: ghcr.io/manimaul/mxmariner.com:latest
+          imagePullPolicy: Always
           name: mxmariner-web-svc
           ports:
             - containerPort: 8443
