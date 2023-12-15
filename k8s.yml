@@ -11,8 +11,8 @@ spec:
   scaleTargetRef:
     kind: ReplicaSet
     name: mxmariner-web-dep
-  minReplicas: 3
-  maxReplicas: 10
+  minReplicas: 1
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 50
 ---
 apiVersion: v1
@@ -23,8 +23,8 @@ metadata:
 spec:
   ports:
     - name: http
-      port: 8443
-      targetPort: 8443
+      port: 8088
+      targetPort: 8088
   selector:
     app: mxmariner-web-svc
   type: ClusterIP
@@ -32,7 +32,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mxmariner-web-deb
+  name: mxmariner-web-dep
   namespace: mxmariner
 spec:
   selector:
@@ -46,66 +46,83 @@ spec:
       imagePullSecrets:
         - name: ghreg
       containers:
-        - image: ghcr.io/manimaul/mxmariner.com:latest
+        - image: ghcr.io/manimaul/mxmariner.com:12-15-23_r0
           imagePullPolicy: Always
           name: mxmariner-web-svc
+          env:
+            - name: TLS_DIR
+              value: NULL
           ports:
-            - containerPort: 8443
+            - containerPort: 8088
               name: http
           resources:
             requests:
               cpu: 100m
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: cert-manager.io/v1
+kind: Certificate
 metadata:
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    haproxy.org/server-ssl: "true"
-    haproxy.org/ssl-redirect: "true"
-  generation: 7
-  name: mxmarineringress
+  name: mxmariner-cert
+  #referenced Secret must exist in the namespace of the istio-ingressgateway
+  namespace: istio-system 
+spec:
+  secretName: mxmariner-cert
+  commonName: mxmariner.com 
+  dnsNames:
+  - mxmariner.com
+  - www.mxmariner.com
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod 
+---
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: mxm-gateway 
   namespace: mxmariner
 spec:
-  rules:
-    - host: mxmariner.com
-      http:
-        paths:
-          - backend:
-              service:
-                name: mxmariner-web-svc
-                port:
-                  number: 8443
-            path: /
-            pathType: ImplementationSpecific
-    - host: www.mxmariner.com
-      http:
-        paths:
-          - backend:
-              service:
-                name: mxmariner-web-svc
-                port:
-                  number: 8443
-            path: /
-            pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - mxmariner.com
-        - www.mxmariner.com
-      secretName: mxmariner-cert
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - mxmariner.com
+    - www.mxmariner.com
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+    - mxmariner.com
+    - www.mxmariner.com
+    tls:
+      mode: SIMPLE
+      #referenced Secret must exist in the namespace of the istio-ingressgateway
+      credentialName: mxmariner-cert
 ---
-#apiVersion: cert-manager.io/v1alpha2
-#kind: Certificate
-#metadata:
-#  name: mxmariner-cert
-#  namespace: mxmariner
-#spec:
-#  commonName: mxmariner.com
-#  secretName: mxmariner-cert
-#  dnsNames:
-#    - mxmariner.com
-#    - www.mxmariner.com
-#    - ehm.mxmariner.com
-#  issuerRef:
-#    name: letsencrypt-prod
-#    kind: ClusterIssuer
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: mxm-virt-svc 
+  namespace: mxmariner
+spec:
+  hosts:
+  - mxmariner.com
+  - www.mxmariner.com
+  gateways:
+  - mxm-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: mxmariner-web-svc
+        port:
+          number: 8088
+---

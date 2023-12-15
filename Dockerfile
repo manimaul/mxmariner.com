@@ -1,3 +1,3 @@
-FROM manimaul/jacuzzi:0.1.1
+FROM manimaul/jacuzzi:0.2.1
 COPY build /mxweb
 CMD ["/mxweb"]

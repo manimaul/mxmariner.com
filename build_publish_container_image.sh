@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-yarn install
-yarn build
+export NODE_OPTIONS=--openssl-legacy-provider
+npm install
+npm run build
 tag_postfix="$(date +"%m-%d-%y")_r0"
 name="ghcr.io/manimaul/mxmariner.com"
 docker build -t "${name}:${tag_postfix}" .
