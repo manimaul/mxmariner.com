@@ -85,15 +85,6 @@ spec:
     istio: ingressgateway
   servers:
   - port:
-      number: 80
-      name: http
-      protocol: HTTP
-    hosts:
-    - mxmariner.com
-    - www.mxmariner.com
-    tls:
-      httpsRedirect: true
-  - port:
       number: 443
       name: https
       protocol: HTTPS
