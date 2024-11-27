@@ -17,10 +17,6 @@ function docker_login() {
   echo "$GH_TOKEN" | docker login ghcr.io -u manimaul --password-stdin
 }
 
-function istio_inject() {
-  kubectl label namespace mxmariner istio-injection=enable
-}
-
 help() {
    echo "Login to the GitHub Container Registry"
    echo
