@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 function k8s_login() {
-  kubectl create namespace mxmariner
   kubectl delete secret --namespace mxmariner ghreg
   kubectl create secret --namespace mxmariner docker-registry ghreg \
     --docker-server=ghcr.io --docker-username=$GH_USER --docker-password=$GH_TOKEN --docker-email=$GH_EMAIL
